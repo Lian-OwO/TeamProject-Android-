@@ -1,5 +1,4 @@
 // ImageAdapter.kt
-
 package com.example.my_universe.recycler
 
 import android.content.Context
@@ -12,11 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.my_universe.R
 import com.example.my_universe.model.CategoryItem
 
-class ImageAdapter(private val context: Context, private val imageList: List<CategoryItem>) :
+open class ImageAdapter(private val context: Context, private val imageList: List<CategoryItem>) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        // val textView: TextView = itemView.findViewById(R.id.textView) // 이 부분을 주석 처리 또는 삭제
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
