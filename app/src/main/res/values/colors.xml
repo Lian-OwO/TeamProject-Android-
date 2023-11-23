@@ -5,5 +5,4 @@
     <color name="purple">@color/material_dynamic_tertiary30</color>
     <color name="orange">#FF8C00</color>
     <color name="red">#E83C77</color>
-    <color name="colorPrimary">#FB0000</color>
 </resources>
