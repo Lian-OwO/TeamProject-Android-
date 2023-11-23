@@ -29,7 +29,6 @@
                     android:id="@+id/categoryImageView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:scaleType="centerCrop"
                     android:src="@drawable/appointment_visual"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="8dp"
                     android:text="전용 정원, 조용하고 편리한 주차공간"
                     android:textColor="@color/black"
@@ -85,23 +84,39 @@
 
                 <ImageView
                     android:id="@+id/imageViewHost"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/host" />
 
-                <TextView
-                    android:id="@+id/textViewHost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="center_vertical"
-                    android:text="호스트 : Golwen님 \n슈퍼호스트 | 호스팅 경력 8년"
-                    android:textSize="16sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewHost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="bottom"
+                        android:textColor="@color/black"
+                        android:text="호스트 : Golwen님"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:gravity="top"
+                        android:textColor="#ccc"
+                        android:text="슈퍼호스트 | 호스팅 경력 8년"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -116,7 +131,6 @@
                     android:background="#ccc"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginEnd="8dp"
                     />
 
@@ -130,10 +144,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/camera" />
 
@@ -145,8 +159,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginEnd="8dp"
                         android:text="공용 펜션의 방"
                         android:textColor="@color/black"
@@ -159,7 +172,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="단독으로 사용하는 방이 있고 공용 공간도 있는 형태 입니다."
@@ -180,8 +192,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
@@ -195,8 +207,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginEnd="8dp"
                         android:text="셀프 체크인"
                         android:textColor="@color/black"
@@ -209,7 +220,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="키패드를 이용해 체크인하세요."
@@ -230,8 +240,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
@@ -245,8 +255,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginEnd="8dp"
                         android:text="Golwen님은 슈퍼호스트입니다"
                         android:textColor="@color/black"
@@ -259,7 +268,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하는 호스트입니다."
@@ -280,8 +288,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
@@ -295,8 +303,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginEnd="8dp"
                         android:text="12월 15일 전까지 무료 취소 가능"
                         android:textColor="@color/black"
@@ -341,6 +348,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="더보기 >"
                 android:textColor="#ccc"
@@ -399,6 +407,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="침실    \n퀸사이즈침대1개"
                         android:textColor="@color/black"
@@ -428,6 +437,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="욕실    \n전용 샤워기"
                         android:textColor="@color/black"
@@ -457,6 +467,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginEnd="8dp"
                         android:text="침실    \n퀸사이즈침대1개"
                         android:textColor="@color/black"
@@ -502,8 +513,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
@@ -512,8 +523,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginEnd="8dp"
                     android:text="드넓은 스카이라인 전망"
                     android:textColor="@color/black"
@@ -532,8 +542,8 @@
 
                 <ImageView
                     android:id="@+id/imageViewcamera"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/camera" />
@@ -541,8 +551,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="8dp"
                     android:text="주방"
                     android:textColor="@color/black"
@@ -560,8 +569,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/camera" />
@@ -569,8 +578,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="8dp"
                     android:text="무선 인터넷"
                     android:textColor="@color/black"
@@ -588,8 +596,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/camera" />
@@ -597,8 +605,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="8dp"
                     android:text="주차장 (익일 체크아웃 시간까지 무료)"
                     android:textColor="@color/black"
@@ -615,6 +622,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="편의시설 48개 모두 보기 >"
                 android:textColor="#ccc"
@@ -641,6 +649,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="호스팅 지역    \n\n기장군, 부산, 한국"
                 android:textColor="@color/black"
@@ -667,6 +676,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="숙소 이용규칙   \n체크인 시간 : 오후 3:00 ~ 오전 12:00   \n체크아웃 시간 : 오전 11:00전까지   \n게스트 정원 : 최대 4명   \n반려동물 : 동반 불가   \n흡연 금지   \n스마트 도어록으로 셀프 체크인"
                 android:textColor="@color/black"
@@ -693,6 +703,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="안전 및 기타 사항   \n- 일산화탄소 경보기   \n- 화재 경보기   \n계단을 올라야함"
                 android:textColor="@color/black"

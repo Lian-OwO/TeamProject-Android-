@@ -50,10 +50,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="8dp"
                 android:text="영도 파티룸 피어 40"
                 android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,6 +80,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="체크인 23.11.26(일) 오후 3:00 ~ 오전 12:00    \n체크아웃 23.12.1(금) 오전 11:00전까지   \n\n★예약 정보★   \n\n객실 타입 A-03 (2인 기준 최대 3인/유료)"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -115,6 +117,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="예   약   자     |     김다영   \n안심번호     |     0504-4043-5545"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -138,6 +141,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="편의 시설"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -174,6 +178,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="결제 정보"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -204,6 +209,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
                     android:textColor="@color/black"
+                    android:textSize="15sp"
                     android:gravity="center_vertical"
                     android:text="상품 가격 (박)   \n결제 시 포인트 사용   \n결제 시 쿠폰 사용   \n\n실 결제 금액   \n결제 수단" />
 
@@ -215,6 +221,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
                     android:textColor="@color/black"
+                    android:textSize="15sp"
                     android:gravity="right"
                     android:text="\230,000원   \n-100,000 P   \n-50,000원   \n\n80,000원   \n신용/체크카드" />
 
@@ -239,6 +246,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="영도 파티룸 피어40 정책  >     \n"
                 android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
