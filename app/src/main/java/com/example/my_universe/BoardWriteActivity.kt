@@ -105,7 +105,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView1.setImageResource(R.drawable.addimage)
+                        binding.myImageView2.setImageResource(R.drawable.addimage)
                         imageState.imageNumState--
                     }
                 }
@@ -127,7 +127,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView1.setImageResource(R.drawable.addimage)
+                        binding.myImageView3.setImageResource(R.drawable.addimage)
                         imageState.imageNumState--
                     }
                 }
@@ -149,7 +149,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView1.setImageResource(R.drawable.addimage)
+                        binding.myImageView4.setImageResource(R.drawable.addimage)
                         imageState.imageNumState--
                     }
                 }
