@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -31,7 +32,7 @@ class BoardWriteActivity : AppCompatActivity() {
     lateinit var dynamicItemImageView : ImageView
     var selectedManu : String = "갤러리에서 선택하기"
     // 이미지 URL을 담을 배열
-    val imageUrlArray = ArrayList<String>()
+    val imageUrlArray = ArrayList<String?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,17 +48,7 @@ class BoardWriteActivity : AppCompatActivity() {
         ) {
             if(it.resultCode === android.app.Activity.RESULT_OK) {
                 imageUrlArray.add(it.data?.data.toString())
-                for((index, imageUrl) in imageUrlArray.withIndex()) {
-                    dynamicItemId = "myImageView" + (index+1).toString()
-                    resourceId = resources.getIdentifier(dynamicItemId, "id", packageName)
-                    dynamicItemImageView = binding.root.findViewById<ImageView>(resourceId)
-                    Glide
-                        .with(getApplicationContext())
-                        .load(imageUrl)
-                        .apply(RequestOptions().override(250,250))
-                        .centerCrop()
-                        .into(dynamicItemImageView)
-                }
+                imageBinding(imageUrlArray)
                 val cursor = contentResolver.query(it.data?.data as Uri,
                     arrayOf<String>(MediaStore.Images.Media.DATA),null,
                     null,null);
@@ -70,12 +61,12 @@ class BoardWriteActivity : AppCompatActivity() {
 
         binding.myImageView1.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            imageState.imageSelectedNum = imageUrlArray.size + 1
-            imageState.imageNumState++
+            // 등록된 이미지가 없다면
             if(imageUrlArray.size==0) {
-                // 이미지가 기본 이미지라면
                 imageLoad(imageState, imageUrlArray, requestLauncher)
-            } else {
+            }
+            // 등록된 이미지가 있다면
+            else {
                 builder.setTitle("사진 작업")
                 builder.setItems(menus) { dialog: DialogInterface, which: Int ->
                     // 사용자가 선택한 항목에 대한 처리
@@ -83,8 +74,8 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView1.setImageResource(R.drawable.addimage)
-                        imageState.imageNumState--
+                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageBinding(imageUrlArray)
                     }
                 }
                 builder.show()
@@ -92,12 +83,12 @@ class BoardWriteActivity : AppCompatActivity() {
         }
         binding.myImageView2.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            imageState.imageSelectedNum = imageUrlArray.size + 1
-            imageState.imageNumState++
+            // 등록된 이미지가 없다면
             if(imageUrlArray.size==0) {
-                // 이미지가 기본 이미지라면
                 imageLoad(imageState, imageUrlArray, requestLauncher)
-            } else {
+            }
+            // 등록된 이미지가 있다면
+            else {
                 builder.setTitle("사진 작업")
                 builder.setItems(menus) { dialog: DialogInterface, which: Int ->
                     // 사용자가 선택한 항목에 대한 처리
@@ -105,8 +96,8 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView2.setImageResource(R.drawable.addimage)
-                        imageState.imageNumState--
+                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageBinding(imageUrlArray)
                     }
                 }
                 builder.show()
@@ -114,12 +105,12 @@ class BoardWriteActivity : AppCompatActivity() {
         }
         binding.myImageView3.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            imageState.imageSelectedNum = imageUrlArray.size + 1
-            imageState.imageNumState++
+            // 등록된 이미지가 없다면
             if(imageUrlArray.size==0) {
-                // 이미지가 기본 이미지라면
                 imageLoad(imageState, imageUrlArray, requestLauncher)
-            } else {
+            }
+            // 등록된 이미지가 있다면
+            else {
                 builder.setTitle("사진 작업")
                 builder.setItems(menus) { dialog: DialogInterface, which: Int ->
                     // 사용자가 선택한 항목에 대한 처리
@@ -127,8 +118,8 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView3.setImageResource(R.drawable.addimage)
-                        imageState.imageNumState--
+                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageBinding(imageUrlArray)
                     }
                 }
                 builder.show()
@@ -136,12 +127,12 @@ class BoardWriteActivity : AppCompatActivity() {
         }
         binding.myImageView4.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            imageState.imageSelectedNum = imageUrlArray.size + 1
-            imageState.imageNumState++
+            // 등록된 이미지가 없다면
             if(imageUrlArray.size==0) {
-                // 이미지가 기본 이미지라면
                 imageLoad(imageState, imageUrlArray, requestLauncher)
-            } else {
+            }
+            // 등록된 이미지가 있다면
+            else {
                 builder.setTitle("사진 작업")
                 builder.setItems(menus) { dialog: DialogInterface, which: Int ->
                     // 사용자가 선택한 항목에 대한 처리
@@ -149,8 +140,8 @@ class BoardWriteActivity : AppCompatActivity() {
                     if(selectedManu == "갤러리에서 선택하기") {
                         imageLoad(imageState, imageUrlArray, requestLauncher)
                     } else {
-                        binding.myImageView4.setImageResource(R.drawable.addimage)
-                        imageState.imageNumState--
+                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageBinding(imageUrlArray)
                     }
                 }
                 builder.show()
@@ -176,11 +167,34 @@ class BoardWriteActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun imageLoad(imageState : ImageState, imageList : ArrayList<String>, requestLauncher: ActivityResultLauncher<Intent>) {
+    private fun imageLoad(imageState : ImageState, imageList : ArrayList<String?>, requestLauncher: ActivityResultLauncher<Intent>) {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setDataAndType(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*"
         )
         requestLauncher.launch(intent)
+    }
+    private fun imageBinding(imageUrlArray : ArrayList<String?>) {
+        if(imageUrlArray.size != 0) {
+            for((index, imageUrl) in imageUrlArray.withIndex()) {
+                dynamicItemId = "myImageView" + (index+1).toString()
+                resourceId = resources.getIdentifier(dynamicItemId, "id", packageName)
+                dynamicItemImageView = binding.root.findViewById<ImageView>(resourceId)
+                Glide
+                    .with(getApplicationContext())
+                    .load(imageUrl)
+                    .apply(RequestOptions().override(250,250))
+                    .centerCrop()
+                    .into(dynamicItemImageView)
+            }
+        }
+        if(imageUrlArray.size != 4) {
+            for(i in imageUrlArray.size..3) {
+                dynamicItemId = "myImageView" + (i+1).toString()
+                resourceId = resources.getIdentifier(dynamicItemId, "id", packageName)
+                dynamicItemImageView = binding.root.findViewById<ImageView>(resourceId)
+                dynamicItemImageView.setImageResource(R.drawable.addimage)
+            }
+        }
     }
 }
