@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="홈"
+        android:icon="@drawable/home" />
+
+    <item
+        android:id="@+id/wish"
+        android:title="위시"
+        android:icon="@drawable/wish" />
+
+    <item
+        android:id="@+id/map"
+        android:title="맵"
+        android:icon="@drawable/map" />
+    <item
+        android:id="@+id/review"
+        android:title="리뷰"
+        android:icon="@drawable/review" />
+    <item
+        android:id="@+id/my"
+        android:title="마이"
+        android:icon="@drawable/profile" />
+
+
+</menu>
