@@ -7,9 +7,14 @@
     tools:context=".AppointmentActivity">
 
 <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    android:id="@+id/appointLinear1"
+    android:layout_width="match_parent"
+    android:layout_height="730dp"
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,14 +31,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/categoryImageView"
+                    android:id="@+id/appointmentImageView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/appointment_visual"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:src="@drawable/appointment_visual01"></ImageView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -96,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
+f
                     <TextView
                         android:id="@+id/textViewHost"
                         android:layout_width="wrap_content"
@@ -313,6 +315,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="안녕하세요. 우즈 스튜디오(@studio_oozeee)입니다. 이불, 베개, 세면용품은 제공되지 않습니다. 촬영 목적으로 이용하는 게스트 분들을 위해 다락방 컨셉의 퀸사이즈 토퍼2개, 담요, 쿠션을 제공해드리고 있습니다."
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -328,20 +344,6 @@
                 />
 
 <!-- @@@@공지 아이콘 끝 -->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="8dp"
-                android:text="안녕하세요. 우즈 스튜디오(@studio_oozeee)입니다. 이불, 베개, 세면용품은 제공되지 않습니다. 촬영 목적으로 이용하는 게스트 분들을 위해 다락방 컨셉의 퀸사이즈 토퍼2개, 담요, 쿠션을 제공해드리고 있습니다."
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -385,99 +387,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
+                android:id="@+id/appointmentText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="8dp"
-                        android:src="@drawable/room" />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="침실    \n퀸사이즈침대1개"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="normal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="8dp"
-                        android:src="@drawable/room" />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="욕실    \n전용 샤워기"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="normal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="8dp"
-                        android:src="@drawable/room" />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="침실    \n퀸사이즈침대1개"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="normal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"  />
 
             </LinearLayout>
 
@@ -705,7 +626,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="8dp"
-                android:text="안전 및 기타 사항   \n- 일산화탄소 경보기   \n- 화재 경보기   \n계단을 올라야함"
+                android:text="안전 및 기타 사항   \n- 일산화탄소 경보기   \n- 화재 경보기   \n- 계단을 올라야함"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="normal"
@@ -764,23 +685,15 @@
     <!-- 스크롤 뷰 끝 -->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0000"
-            android:text="예약하기"
-            android:textColor="#ffffff"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="665dp" />
-
-    </LinearLayout>
 
 </LinearLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:text="예약하기"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

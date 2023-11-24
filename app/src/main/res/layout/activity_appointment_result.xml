@@ -9,8 +9,11 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +34,7 @@
                 android:layout_marginEnd="8dp"
                 android:background="#ccc"
                 android:text="체크인 완료!     |     예약번호 231111EJFLDJDYDU"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 tools:layout_editor_absoluteX="5dp"
                 tools:layout_editor_absoluteY="665dp" />
 
@@ -115,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="예   약   자     |     김다영   \n안심번호     |     0504-4043-5545"
+                android:text="예   약   자     |     김다영   \n안심 번호     |     0504-4043-5545"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
