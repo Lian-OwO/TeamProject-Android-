@@ -10,15 +10,14 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.my_universe.databinding.ActivityBoardWriteBinding
-import com.example.my_universe.model.BoardItem
-import com.example.my_universe.model.ImageState
+import com.example.my_universe.utils.MyUtil
+import java.io.File
+import java.util.UUID
 
 
 class BoardWriteActivity : AppCompatActivity() {
@@ -26,15 +25,23 @@ class BoardWriteActivity : AppCompatActivity() {
     // 갤러리에서 선택된 , 파일의 위치
     // 초기화는 밑에서 하기.
     lateinit var filePath : String
+    // xml 파일 내 동적인 이미지 뷰 선택하기 위한 변수
     lateinit var dynamicItemId : String
     var resourceId : Int = 0
     lateinit var dynamicItemImageView : ImageView
+    // 다이얼로그 변수
     var selectedManu : String = "갤러리에서 선택하기"
     // 이미지 URL을 담을 배열
     val imageUrlArray = ArrayList<String?>()
+    val imageFilepathArray = ArrayList<String?>()
+    // 게시글 내용
+    lateinit var title : String
+    lateinit var subTitle : String
+    lateinit var content : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MyUtil.checkPermission(this)
         binding = ActivityBoardWriteBinding.inflate(layoutInflater)
         // 초기 뷰 설정
         binding.categoryTitle.headText.text = "제목"
@@ -48,12 +55,16 @@ class BoardWriteActivity : AppCompatActivity() {
             if(it.resultCode === android.app.Activity.RESULT_OK) {
                 imageUrlArray.add(it.data?.data.toString())
                 imageBinding(imageUrlArray)
+                Log.d("kjh", "imageBinding 후!")
                 val cursor = contentResolver.query(it.data?.data as Uri,
                     arrayOf<String>(MediaStore.Images.Media.DATA),null,
                     null,null);
 
                 cursor?.moveToFirst().let {
                     filePath = cursor?.getString(0) as String
+                    imageFilepathArray.add(filePath)
+                    Log.d("kjh", "filePath는?")
+                    Log.d("kjh", filePath)
                 }
             }
         }
@@ -74,6 +85,7 @@ class BoardWriteActivity : AppCompatActivity() {
                         imageLoad(requestLauncher)
                     } else {
                         imageUrlArray.removeAt(0)
+                        imageFilepathArray.removeAt(0)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -96,6 +108,7 @@ class BoardWriteActivity : AppCompatActivity() {
                         imageLoad(requestLauncher)
                     } else {
                         imageUrlArray.removeAt(1)
+                        imageFilepathArray.removeAt(1)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -118,6 +131,7 @@ class BoardWriteActivity : AppCompatActivity() {
                         imageLoad(requestLauncher)
                     } else {
                         imageUrlArray.removeAt(2)
+                        imageFilepathArray.removeAt(2)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -140,6 +154,7 @@ class BoardWriteActivity : AppCompatActivity() {
                         imageLoad(requestLauncher)
                     } else {
                         imageUrlArray.removeAt(3)
+                        imageFilepathArray.removeAt(3)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -148,14 +163,33 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.btnSubmit.setOnClickListener {
-            val title = binding.categoryTitle.textEdit.text.toString()
-            val subTitle = binding.categorySubTitle.textEdit.text.toString()
-            val content = binding.textContent.text.toString()
+            // 스토리지 접근 도구 ,인스턴스
+            val storage = MyApplication.storage
+            // 스토리지에 저장할 인스턴스
+            val storageRef = storage.reference
+            Log.d("kjh", "imgRef 후!")
+            // 파일 불러오기. 갤러리에서 사진을 선택 했고, 또한, 해당 위치에 접근해서,
+            // 파일도 불러오기 가능함.
+            for (filePath in imageFilepathArray) {
+                var file : Uri = Uri.fromFile(File(filePath))
+                val uuid = UUID.randomUUID().toString()
+                // 이미지 저장될 위치 및 파일명
+                val imgRef = storageRef.child("AndroidImg/${uuid}.jpg")
+                imgRef.putFile(file)
+                    // 업로드 후, 수행할 콜백 함수 정의. 실패했을 경우 콜백함수 정의
+                    .addOnCompleteListener{task ->
+                        if (task.isSuccessful) {
+                            Log.d("kjh", "업로드 성공!")
+                        } else {
+                            // 업로드 실패
+                            Log.d("kjh", "업로드 실패!")
+                        }
+                    }
+            }
 
-            val boardItem : BoardItem = BoardItem(title, subTitle, content)
         }
         binding.btnCancel.setOnClickListener {
-
+            finish()
         }
 
 
