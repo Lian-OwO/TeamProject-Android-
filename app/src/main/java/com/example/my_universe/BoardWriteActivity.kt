@@ -26,7 +26,6 @@ class BoardWriteActivity : AppCompatActivity() {
     // 갤러리에서 선택된 , 파일의 위치
     // 초기화는 밑에서 하기.
     lateinit var filePath : String
-    var imageState = ImageState(0, 0, 0)
     lateinit var dynamicItemId : String
     var resourceId : Int = 0
     lateinit var dynamicItemImageView : ImageView
@@ -63,7 +62,7 @@ class BoardWriteActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             // 등록된 이미지가 없다면
             if(imageUrlArray.size==0) {
-                imageLoad(imageState, imageUrlArray, requestLauncher)
+                imageLoad(requestLauncher)
             }
             // 등록된 이미지가 있다면
             else {
@@ -72,9 +71,9 @@ class BoardWriteActivity : AppCompatActivity() {
                     // 사용자가 선택한 항목에 대한 처리
                     selectedManu = menus[which]
                     if(selectedManu == "갤러리에서 선택하기") {
-                        imageLoad(imageState, imageUrlArray, requestLauncher)
+                        imageLoad(requestLauncher)
                     } else {
-                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageUrlArray.removeAt(0)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -84,8 +83,8 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.myImageView2.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             // 등록된 이미지가 없다면
-            if(imageUrlArray.size==0) {
-                imageLoad(imageState, imageUrlArray, requestLauncher)
+            if(imageUrlArray.size<=1) {
+                imageLoad(requestLauncher)
             }
             // 등록된 이미지가 있다면
             else {
@@ -94,9 +93,9 @@ class BoardWriteActivity : AppCompatActivity() {
                     // 사용자가 선택한 항목에 대한 처리
                     selectedManu = menus[which]
                     if(selectedManu == "갤러리에서 선택하기") {
-                        imageLoad(imageState, imageUrlArray, requestLauncher)
+                        imageLoad(requestLauncher)
                     } else {
-                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageUrlArray.removeAt(1)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -106,8 +105,8 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.myImageView3.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             // 등록된 이미지가 없다면
-            if(imageUrlArray.size==0) {
-                imageLoad(imageState, imageUrlArray, requestLauncher)
+            if(imageUrlArray.size<=2) {
+                imageLoad(requestLauncher)
             }
             // 등록된 이미지가 있다면
             else {
@@ -116,9 +115,9 @@ class BoardWriteActivity : AppCompatActivity() {
                     // 사용자가 선택한 항목에 대한 처리
                     selectedManu = menus[which]
                     if(selectedManu == "갤러리에서 선택하기") {
-                        imageLoad(imageState, imageUrlArray, requestLauncher)
+                        imageLoad(requestLauncher)
                     } else {
-                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageUrlArray.removeAt(2)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -128,8 +127,8 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.myImageView4.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             // 등록된 이미지가 없다면
-            if(imageUrlArray.size==0) {
-                imageLoad(imageState, imageUrlArray, requestLauncher)
+            if(imageUrlArray.size<=3) {
+                imageLoad(requestLauncher)
             }
             // 등록된 이미지가 있다면
             else {
@@ -138,9 +137,9 @@ class BoardWriteActivity : AppCompatActivity() {
                     // 사용자가 선택한 항목에 대한 처리
                     selectedManu = menus[which]
                     if(selectedManu == "갤러리에서 선택하기") {
-                        imageLoad(imageState, imageUrlArray, requestLauncher)
+                        imageLoad(requestLauncher)
                     } else {
-                        imageUrlArray.removeAt(imageUrlArray.size-1)
+                        imageUrlArray.removeAt(3)
                         imageBinding(imageUrlArray)
                     }
                 }
@@ -154,10 +153,6 @@ class BoardWriteActivity : AppCompatActivity() {
             val content = binding.textContent.text.toString()
 
             val boardItem : BoardItem = BoardItem(title, subTitle, content)
-
-            Log.d("kjh", boardItem.title)
-            Log.d("kjh", boardItem.subTitle)
-            Log.d("kjh", boardItem.content)
         }
         binding.btnCancel.setOnClickListener {
 
@@ -167,7 +162,7 @@ class BoardWriteActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun imageLoad(imageState : ImageState, imageList : ArrayList<String?>, requestLauncher: ActivityResultLauncher<Intent>) {
+    private fun imageLoad(requestLauncher: ActivityResultLauncher<Intent>) {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setDataAndType(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*"
