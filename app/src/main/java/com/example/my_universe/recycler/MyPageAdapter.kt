@@ -1,4 +1,3 @@
-// MyPageAdapter.kt
 package com.example.my_universe.recycler
 
 import android.view.LayoutInflater
@@ -16,6 +15,7 @@ class MyPageAdapter(private val items: List<MyPageItem>) :
         val idTextView: TextView = itemView.findViewById(R.id.IdView)
         val emailTextView: TextView = itemView.findViewById(R.id.EmailView)
         val nameTextView: TextView = itemView.findViewById(R.id.NameView)
+        val phoneNumberView: TextView = itemView.findViewById(R.id.PhoneNumberView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPageViewHolder {
@@ -27,10 +27,10 @@ class MyPageAdapter(private val items: List<MyPageItem>) :
         val item = items[position]
 
         // 데이터를 뷰에 바인딩
-        holder.idTextView.text = "아이디: ${item.id}"
-        holder.emailTextView.text = "이메일: ${item.email}"
-        holder.nameTextView.text = "이름: ${item.name}"
-
+        holder.idTextView.text = holder.itemView.context.getString(R.string.id_label, item.uid)
+        holder.emailTextView.text = holder.itemView.context.getString(R.string.email_label, item.email)
+        holder.nameTextView.text = holder.itemView.context.getString(R.string.name_label, item.name)
+        holder.phoneNumberView.text = holder.itemView.context.getString(R.string.phone_number_label, item.phoneNumber)
     }
 
     override fun getItemCount(): Int {
