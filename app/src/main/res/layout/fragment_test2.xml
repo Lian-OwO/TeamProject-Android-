@@ -10,16 +10,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/hae">
 
-        </ImageView>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="라바1" />
+            android:text="" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tabRecyclerTest2"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
