@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.my_universe.MainAdapter.MyAdapter3
 import com.example.my_universe.databinding.FragmentTest1Binding
 import com.example.my_universe.recycler.ItemData
 
@@ -36,6 +38,12 @@ lateinit var binding: FragmentTest1Binding
 
         itemList.add(itemData1)
         itemList.add(itemData2)
+
+        // 리사이클러뷰 어댑터 구현해야 함
+        // 리사이클러뷰 어댑터에서 텍스트 데이터를 바인딩 시키고, 이미지 데이터는 프레그먼트 내 뷰페이저 객체에 binding으로 접근해서 이미지 바인딩 시키기
+        //        리사이클러뷰 붙이기
+        binding.tabRecyclerTest1.adapter = context?.let { MyAdapter3(it,itemList) }
+        binding.tabRecyclerTest1.layoutManager = LinearLayoutManager(context)
 
         return binding.root
     }

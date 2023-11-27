@@ -40,7 +40,7 @@ class MyAdapter3 (val context: Context, val datas: MutableList<ItemData>) : Recy
             .with(context)
             .load(datas[position].img1)
             .override(300,200)
-            .into(binding.tapFragSliderexImg)
+
 
         // 더미 데이터 재사용, 일단, 텍스트 뷰
         val testDataSet = ArrayList<String>()

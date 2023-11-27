@@ -88,7 +88,7 @@
                 <FrameLayout
                     android:id="@+id/tabContent"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="400dp"
                     android:layout_weight="1"
 
                     />
@@ -111,33 +111,34 @@
 
         <!--방법2 뷰 xml로 탭 아이템을 추가 -->
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/home"
             android:text="home"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/wish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/wish"
             android:text="wish"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/map"
             android:text="map"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/review"
             android:text="review"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/myPage"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/profile"
             android:text="myPage"/>
     </com.google.android.material.tabs.TabLayout>
 

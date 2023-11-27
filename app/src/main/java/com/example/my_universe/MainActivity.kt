@@ -32,15 +32,20 @@ class MainActivity : AppCompatActivity() {
 
         initializeRecyclerView()
 
+
+
+
+
+
         tabLayout.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener {
             //익명 클래스 정의하고, 해당 이벤트 리스너 구현하면, 의무적으로,
             // 재정의 해야하는 함수3개 있음.
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
-                    "Tab1" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "Tab2" -> transaction.replace(R.id.tabContent, Test2Fragment())
-                    "Tab3" -> transaction.replace(R.id.tabContent, Test3Fragment())
+                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "wish" -> transaction.replace(R.id.tabContent, Test2Fragment())
+                    "map" -> transaction.replace(R.id.tabContent, Test3Fragment())
                 }
                 transaction.commit()
             }
