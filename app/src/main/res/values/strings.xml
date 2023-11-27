@@ -6,4 +6,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="id_label">아이디: %s</string>
+    <string name="email_label">이메일: %s</string>
+    <string name="name_label">이름: %s</string>
+    <string name="phone_number_label">전화번호: %s</string>
+
 </resources>

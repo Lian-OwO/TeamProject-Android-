@@ -34,4 +34,12 @@
         android:layout_marginBottom="15dp"
         android:textSize="12sp"
         android:text="이름: " />
+
+    <TextView
+        android:id="@+id/PhoneNumberView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
+        android:text="전화번호: " />
 </LinearLayout>
