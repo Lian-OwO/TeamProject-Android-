@@ -18,6 +18,8 @@
         android:theme="@style/Theme.My_Universe"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
         <activity
             android:name=".BoardWriteActivity"
             android:exported="true" />

@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="uni2.json"
+        app:lottie_fileName="login.json"
         app:lottie_loop="true"
 
         />

@@ -1,8 +1,7 @@
 package com.example.my_universe
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.my_universe.databinding.ActivityAppointmentBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.databinding.ActivityAppointmentResultBinding
 
 class AppointmentResultActivity : AppCompatActivity() {
