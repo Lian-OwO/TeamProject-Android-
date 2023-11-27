@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BoardWriteActivity">
+
+    <include
+        layout="@layout/board_input_layout"
+        android:id="@+id/categoryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <include
+        layout="@layout/board_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categorySubTitle"
+        app:layout_constraintTop_toBottomOf="@+id/categoryTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentTextWrapper"
+        app:layout_constraintTop_toBottomOf="@+id/categorySubTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp" >
+
+        <TextView
+            android:id="@+id/contentText"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:text="내용"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <EditText android:id="@+id/textContent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="290dp"
+            android:layout_height="200dp"
+            android:background="@drawable/border_style"
+            android:textSize="20sp"
+            android:gravity="top"
+            android:padding="10dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imageUploadWrapper"
+        app:layout_constraintTop_toBottomOf="@+id/contentTextWrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp" >
+
+        <TextView
+            android:id="@+id/imageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:text="이미지 업로드"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="start"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@+id/imageText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/myImageView1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/addimage"
+                android:clickable="true" />
+            <ImageView
+                android:id="@+id/myImageView2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/addimage"
+                android:clickable="true" />
+            <ImageView
+                android:id="@+id/myImageView3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/addimage"
+                android:clickable="true" />
+            <ImageView
+                android:id="@+id/myImageView4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/addimage"
+                android:clickable="true" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:text="취소하기"
+            android:textStyle="bold"
+            android:background="@drawable/button_style2"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:text="업로드"
+            android:textStyle="bold"
+            android:background="@drawable/button_style1"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

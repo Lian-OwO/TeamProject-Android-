@@ -3,6 +3,7 @@
     <style name="Base.Theme.My_Universe" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#2389C8</item>
         <item name="android:fontFamily">@font/parti</item>
+        <item name="color">#ff0000</item>
     </style>
     <style name="Theme.My_Universe" parent="Base.Theme.My_Universe" />
 
