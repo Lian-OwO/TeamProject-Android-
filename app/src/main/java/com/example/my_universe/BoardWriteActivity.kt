@@ -14,8 +14,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.my_universe.MyApplication.Companion.db
 import com.example.my_universe.databinding.ActivityBoardWriteBinding
+import com.example.my_universe.model.BoardItem
 import com.example.my_universe.utils.MyUtil
+import com.google.firebase.Timestamp
 import java.io.File
 import java.util.UUID
 
@@ -163,6 +166,17 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.btnSubmit.setOnClickListener {
+            title = binding.categoryTitle.textEdit.getText().toString()
+            subTitle = binding.categorySubTitle.textEdit.getText().toString()
+            content = binding.textContent.getText().toString()
+            val board = BoardItem(
+                title = binding.categoryTitle.textEdit.text.toString(),
+                subTitle = binding.categorySubTitle.textEdit.text.toString(),
+                content = binding.textContent.text.toString(),
+                timestamp = Timestamp.now(),
+                images = mutableMapOf()
+            )
+
             // 스토리지 접근 도구 ,인스턴스
             val storage = MyApplication.storage
             // 스토리지에 저장할 인스턴스
@@ -170,23 +184,36 @@ class BoardWriteActivity : AppCompatActivity() {
             Log.d("kjh", "imgRef 후!")
             // 파일 불러오기. 갤러리에서 사진을 선택 했고, 또한, 해당 위치에 접근해서,
             // 파일도 불러오기 가능함.
-            for (filePath in imageFilepathArray) {
+            for ((index, filePath) in imageFilepathArray.withIndex()) {
+                val dynamicKey = "img${index + 1}"
                 var file : Uri = Uri.fromFile(File(filePath))
                 val uuid = UUID.randomUUID().toString()
                 // 이미지 저장될 위치 및 파일명
                 val imgRef = storageRef.child("AndroidImg/${uuid}.jpg")
+                board.addImage(dynamicKey,"AndroidImg/${uuid}.jpg")
                 imgRef.putFile(file)
                     // 업로드 후, 수행할 콜백 함수 정의. 실패했을 경우 콜백함수 정의
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful) {
                             Log.d("kjh", "업로드 성공!")
+                            val boardCollection = db.collection("boardList")
+                            boardCollection.add(board)
+                                .addOnSuccessListener { documentReference ->
+                                    // 성공 시 처리
+                                    Log.d("게시글 업로드", "DocumentSnapshot added with ID: ${documentReference.id}")
+                                }
+                                .addOnFailureListener { e ->
+                                    // 실패 시 처리
+                                    Log.w("게시글 업로드", "Error adding document", e)
+                                }
+                            finish()
                         } else {
                             // 업로드 실패
                             Log.d("kjh", "업로드 실패!")
+                            Toast.makeText(this, "이미지 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
-
         }
         binding.btnCancel.setOnClickListener {
             finish()
