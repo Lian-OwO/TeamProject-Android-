@@ -22,6 +22,37 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    tools:context=".AppointmentActivity">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewPager01"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout01"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+
+                        android:background="@color/white"
+                        app:tabRippleColor="#FF1313"
+                        app:tabGravity="fill"
+
+                        app:tabIconTint="@color/menu_selected"
+                        app:tabTextColor="@color/menu_selected"
+
+                        app:tabIndicatorColor="@color/menu_selected"
+                        app:tabIndicatorHeight="5dp"
+                        app:tabIndicatorGravity="top"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -30,7 +61,7 @@
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:scaleType="centerCrop"-->
-<!--                        android:src="@drawable/appointment_visual"-->
+<!--                        android:src="@drawable/appointment_visual01"-->
 <!--                        app:layout_constraintEnd_toEndOf="parent"-->
 <!--                        app:layout_constraintStart_toStartOf="parent"-->
 <!--                        app:layout_constraintTop_toTopOf="parent" />-->
