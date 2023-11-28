@@ -32,22 +32,53 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="8dp"
-                android:background="#ccc"
+                android:background="@color/black"
                 android:text="체크인 완료!     |     예약번호 231111EJFLDJDYDU"
                 android:textColor="@color/white"
                 tools:layout_editor_absoluteX="5dp"
                 tools:layout_editor_absoluteY="665dp" />
 
-            <ImageView
-                android:id="@+id/categoryImageView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".AppointmentResultActivity">
 
-                android:scaleType="centerCrop"
-                android:src="@drawable/appointment_result"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout02"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+
+                    android:background="@color/white"
+                    app:tabRippleColor="#FF1313"
+                    app:tabGravity="fill"
+
+                    app:tabIconTint="@color/menu_selected"
+                    app:tabTextColor="@color/menu_selected"
+
+                    app:tabIndicatorColor="@color/menu_selected"
+                    app:tabIndicatorHeight="5dp"
+                    app:tabIndicatorGravity="top"
+                    />
+
+            </LinearLayout>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/categoryImageView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/appointment_result01"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,7 +113,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:text="체크인 23.11.26(일) 오후 3:00 ~ 오전 12:00    \n체크아웃 23.12.1(금) 오전 11:00전까지   \n\n★예약 정보★   \n\n객실 타입 A-03 (2인 기준 최대 3인/유료)"
-                android:textColor="@color/black"
+                android:textColor="#ff0000"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
