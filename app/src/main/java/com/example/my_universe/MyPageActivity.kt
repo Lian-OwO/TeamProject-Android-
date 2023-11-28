@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.databinding.ActivityMyPageBinding
 import com.example.my_universe.model.MyPageItem
-import com.example.my_universe.recycler.MyPageAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -17,10 +16,12 @@ import com.google.firebase.database.ValueEventListener
 class MyPageActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
+    lateinit var binding: ActivityMyPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_page)
+        binding = ActivityMyPageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -47,10 +48,10 @@ class MyPageActivity : AppCompatActivity() {
 
                         // myPageItem 객체에 데이터가 들어있습니다. 이를 원하는 방식으로 처리하세요.
                         if (myPageItem != null) {
-                            Log.d("scb", "User ID: ${myPageItem.uid}")
-                            Log.d("scb", "Email: ${myPageItem.email}")
-                            Log.d("scb", "Name: ${myPageItem.name}")
-                            Log.d("scb", "Phone Number: ${myPageItem.phoneNumber}")
+                            // 이메일, 이름, 전화번호를 TextView에 설정
+                            binding.EmailView.text = "이메일: ${myPageItem.email}"
+                            binding.NameView.text = "이름: ${myPageItem.name}"
+                            binding.PhoneNumberView.text = "전화번호: ${myPageItem.phoneNumber}"
                         }
                     }
                 }
@@ -63,7 +64,7 @@ class MyPageActivity : AppCompatActivity() {
         } else {
             // 사용자가 로그인하지 않은 상태
             // 로그인 화면으로 이동하거나 다른 처리를 수행할 수 있습니다.
-            Log.d("scb", "User is not logged in.")
+            Log.d("scb", "로그인 상태 아님")
         }
     }
 }
