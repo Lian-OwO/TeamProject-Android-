@@ -9,7 +9,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -814,17 +818,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonAppointment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ff0000"
+                android:backgroundTint="#ff0000"
                 android:text="예약하기"
-                android:textColor="#ffffff"
+                android:textColor="#fff"
                 tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="665dp" />
+                tools:layout_editor_absoluteY="665dp"
+                android:onClick="onRegisterClick" />
 
         </LinearLayout>
 
