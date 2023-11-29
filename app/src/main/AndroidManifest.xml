@@ -20,6 +20,9 @@
 
 
         <activity
+            android:name=".WishActivity"
+            android:exported="true" />
+        <activity
             android:name=".BoardWriteActivity"
             android:exported="true" />
         <activity
