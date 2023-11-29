@@ -12,6 +12,7 @@ import com.example.my_universe.MyApplication.Companion.auth
 import com.example.my_universe.MyApplication.Companion.email
 import com.example.my_universe.databinding.ActivityLoginFormBinding
 import com.example.my_universe.retrofit.RetrofitAdapter
+import com.firebase.ui.auth.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -91,7 +92,7 @@ class LoginFormActivity : AppCompatActivity() {
         binding.googleAuthInBtn.setOnClickListener {
             val gso = GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
             val signInIntent = GoogleSignIn.getClient(this,gso).signInIntent
