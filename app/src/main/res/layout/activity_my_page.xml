@@ -137,17 +137,30 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-        <!-- 더미 -->
-<!--        <Button-->
-<!--            android:id="@+id/Btn"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginHorizontal="5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/button_round"-->
-<!--            android:text="더미"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="15sp" />-->
+        <!-- 로그아웃 버튼 -->
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_round"
+            android:text="로그아웃"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <!-- 로그인 버튼 -->
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_round"
+            android:text="로그인"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <!-- 텍스트뷰 -->

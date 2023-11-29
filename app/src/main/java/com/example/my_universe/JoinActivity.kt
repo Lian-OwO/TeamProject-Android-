@@ -52,7 +52,7 @@ class JoinActivity : AppCompatActivity() {
 //            val myRef = database.getReference("users")
 //
 ////            database.child("users").child(userId).setValue(user)
-////            myRef.setValue(user)
+//            myRef.setValue(user)
 //            myRef.setValue("abc" , "def")
 
             // 기본쓰기 확인1
@@ -63,12 +63,12 @@ class JoinActivity : AppCompatActivity() {
 
 //            val user2 = User(name, email)
 
-            database.child("users").child("1").setValue(user)
+            database.child("users").child("${email}").setValue(user)
 
-            Log.d("lsy", "name : ${name}")
-            Log.d("lsy", "password : ${password}")
-            Log.d("lsy", "passwordCheck : ${passwordCheck}")
-            Log.d("lsy", "email : ${email}")
+            Log.d("scb", "name : ${name}")
+            Log.d("scb", "password : ${password}")
+            Log.d("scb", "passwordCheck : ${passwordCheck}")
+            Log.d("scb", "email : ${email}")
         }
 
 

@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
                     "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
                     "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
                     "map" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "myPage" -> {
+                        //MyPageActivity로 이동
+                        startActivity(Intent(this@MainActivity, MyPageActivity::class.java))}
                 }
                 transaction.commit()
             }
