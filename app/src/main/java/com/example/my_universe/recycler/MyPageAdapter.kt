@@ -14,8 +14,8 @@ class MyPageAdapter(private val items: List<MyPageItem>) :
     inner class MyPageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val idTextView: TextView = itemView.findViewById(R.id.idTextView)
         val emailTextView: TextView = itemView.findViewById(R.id.EmailView)
-        val nameTextView: TextView = itemView.findViewById(R.id.NameView)
-        val phoneNumberView: TextView = itemView.findViewById(R.id.PhoneNumberView)
+//        val nameTextView: TextView = itemView.findViewById(R.id.NameView)
+//        val phoneNumberView: TextView = itemView.findViewById(R.id.PhoneNumberView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPageViewHolder {
@@ -29,8 +29,8 @@ class MyPageAdapter(private val items: List<MyPageItem>) :
         // 데이터를 뷰에 바인딩
         holder.idTextView.text = holder.itemView.context.getString(R.string.id_label, item.uid)
         holder.emailTextView.text = holder.itemView.context.getString(R.string.email_label, item.email)
-        holder.nameTextView.text = holder.itemView.context.getString(R.string.name_label, item.name)
-        holder.phoneNumberView.text = holder.itemView.context.getString(R.string.phone_number_label, item.phoneNumber)
+//        holder.nameTextView.text = holder.itemView.context.getString(R.string.name_label, item.name)
+//        holder.phoneNumberView.text = holder.itemView.context.getString(R.string.phone_number_label, item.phoneNumber)
     }
 
     override fun getItemCount(): Int {
