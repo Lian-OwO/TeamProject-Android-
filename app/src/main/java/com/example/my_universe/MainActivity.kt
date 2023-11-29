@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.Test1Fragment
+import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
 import com.example.my_universe.recycler.CategoryAdapter
@@ -37,9 +38,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
-                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "홈" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "위시" -> transaction.replace(R.id.tabContent, WishFragment())
+                    "맵" -> transaction.replace(R.id.tabContent, MapFragment())
                 }
                 transaction.commit()
             }

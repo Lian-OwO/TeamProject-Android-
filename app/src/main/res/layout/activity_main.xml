@@ -28,7 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"
+                />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -40,17 +41,31 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:cardCornerRadius="50dp"
+            />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/searchCardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView">
+
+            <TextView
+                android:id="@+id/customTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="         어디로 여행 가세요?   어디든지 | 언제든 | 게스트"
+                android:textColor="#ccc"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                />
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
@@ -65,29 +80,16 @@
         <LinearLayout
             android:id="@+id/textViewContainer"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="500dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchCardView">
 
-            <!-- TextView -->
-            <TextView
-                android:id="@+id/customTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="이달의 추천 여행지"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"
-                android:padding="8dp"
-                />
-
-
                 <FrameLayout
                     android:id="@+id/tabContent"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="400dp"
                     android:layout_weight="1"
 
                     />
@@ -104,6 +106,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -113,32 +116,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/home"
-            android:text="home"/>
+            android:text="홈"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/wish"
-            android:text="wish"/>
+            android:text="위시"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/map"
-            android:text="map"/>
+            android:text="맵"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/review"
-            android:text="review"/>
+            android:text="리뷰"/>
 
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/profile"
-            android:text="myPage"/>
+            android:text="마이"/>
     </com.google.android.material.tabs.TabLayout>
 
 
