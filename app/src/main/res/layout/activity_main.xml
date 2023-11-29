@@ -65,9 +65,8 @@
         <LinearLayout
             android:id="@+id/textViewContainer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="600dp"
             android:orientation="vertical"
-            android:layout_weight="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchCardView">
@@ -88,7 +87,7 @@
                 <FrameLayout
                     android:id="@+id/tabContent"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="500dp"
                     android:layout_weight="1"
 
                     />

@@ -2,6 +2,7 @@ package com.example.my_universe.ApiModel
 
 data class BoardListModel(
 
+
     val header : String,
 
     val pageNo: String,

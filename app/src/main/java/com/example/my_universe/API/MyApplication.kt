@@ -10,14 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 // 앱이 실행이 되면, 해당 MyApplication 의 기능이
 // 메모리 등록이 되어서 사용하기 편함.
 class MyApplication : Application(){
-
+    val BASE_URL = "http://apis.data.go.kr/6260000/"
+    val BASE_URL2 = "https://apis.data.go.kr/6260000/RecommendedService/"
     // 1)통신에 필요한 인스턴스를 선언 및 초기화
     // 아직 초기화 안해서 그럼.
     val networkService : INetworkService
     // 2)통신할 서버의 URL 주소를 등록함.
     val retrofit : Retrofit
         get() = Retrofit.Builder()
-            .baseUrl("http://apis.data.go.kr/6260000/RecommendedService/")
+//            .baseUrl("http://apis.data.go.kr/6260000/RecommendedService/")
+            .baseUrl(BASE_URL2)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

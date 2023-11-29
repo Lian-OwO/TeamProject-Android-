@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.Test1Fragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         val tabLayout = binding.tabs
         setContentView(binding.root)
 
@@ -36,8 +38,8 @@ class MainActivity : AppCompatActivity() {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
                     "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
-//                    "wish" -> transaction.replace(R.id.tabContent, Test2Fragment())
-//                    "map" -> transaction.replace(R.id.tabContent, Test3Fragment())
+                    "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
                 }
                 transaction.commit()
             }
