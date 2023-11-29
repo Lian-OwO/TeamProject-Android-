@@ -114,7 +114,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:background="@drawable/button_round"
-            android:text="정보수정"
+            android:text="프로필 편집"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -131,16 +131,16 @@
             android:textSize="15sp" />
 
         <!-- 더미 -->
-        <Button
-            android:id="@+id/Btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_round"
-            android:text="더미"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+<!--        <Button-->
+<!--            android:id="@+id/Btn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="5dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/button_round"-->
+<!--            android:text="더미"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp" />-->
     </LinearLayout>
 
     <!-- 텍스트뷰 -->
@@ -158,6 +158,46 @@
         android:textSize="15sp"
 
         app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--방법2 뷰 xml로 탭 아이템을 추가 -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/home"
+            android:text="home"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/wish"
+            android:text="wish"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/map"
+            android:text="map"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/review"
+            android:text="review"/>
+
+        <com.google.android.material.tabs.TabItem
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/profile"
+            android:text="myPage"/>
+    </com.google.android.material.tabs.TabLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
