@@ -4,24 +4,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.my_universe.MainFragment.Test1Fragment
-import com.example.my_universe.MainFragment.Test2Fragment
-import com.example.my_universe.MainFragment.Test3Fragment
+
 
 class ViewPageAdapterTest(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {
 
     //각 프래그먼트들을 담을 리스트
-    var testFragment : List<Fragment>
+    var test1Fragment : List<Fragment>
 
     init {
-        testFragment = listOf(Test1Fragment(), Test2Fragment(), Test3Fragment())
+        test1Fragment = listOf(Test1Fragment())
     }
 
     override fun getItemCount(): Int {
-        return testFragment.size
+        return test1Fragment.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        val returnFragment : Fragment = testFragment[position]
+        val returnFragment : Fragment = test1Fragment[position]
         return returnFragment
     }
 

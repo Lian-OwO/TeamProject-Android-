@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_universe.MainFragment.Test1Fragment
-import com.example.my_universe.MainFragment.Test2Fragment
-import com.example.my_universe.MainFragment.Test3Fragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
 import com.example.my_universe.recycler.CategoryAdapter
@@ -25,17 +23,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val tabLayout = binding.tabs
-
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
 
         initializeRecyclerView()
-
-
-
-
-
 
         tabLayout.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener {
             //익명 클래스 정의하고, 해당 이벤트 리스너 구현하면, 의무적으로,
@@ -44,8 +36,8 @@ class MainActivity : AppCompatActivity() {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
                     "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "wish" -> transaction.replace(R.id.tabContent, Test2Fragment())
-                    "map" -> transaction.replace(R.id.tabContent, Test3Fragment())
+//                    "wish" -> transaction.replace(R.id.tabContent, Test2Fragment())
+//                    "map" -> transaction.replace(R.id.tabContent, Test3Fragment())
                 }
                 transaction.commit()
             }
@@ -85,6 +77,9 @@ class MainActivity : AppCompatActivity() {
         val categoryRecyclerView: RecyclerView = binding.categoryRecyclerView
         categoryRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+
+
 
         val categoryItems = listOf(
             CategoryItem(R.drawable.category, "강서구"),
