@@ -17,7 +17,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="75dp"
         app:cardElevation="20dp">
-
+        <Button
+            android:id="@+id/profileUpdateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginTop="40dp"
+            android:text="편집" />
         <ImageView
             android:id="@+id/resultUserImage"
             android:layout_width="match_parent"

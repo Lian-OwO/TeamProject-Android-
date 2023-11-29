@@ -98,6 +98,7 @@ package com.example.my_universe
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.databinding.ActivityMyPageBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -128,6 +129,7 @@ class MyPageActivity : AppCompatActivity() {
             // 사용자가 로그인하지 않은 상태
             // 로그인 화면으로 이동하거나 다른 처리를 수행할 수 있습니다.
             Log.d("scb", "로그인 상태 아님")
+            Toast.makeText(this, "로그인 상태가 아님", Toast.LENGTH_SHORT).show()
         }
     }
 }
