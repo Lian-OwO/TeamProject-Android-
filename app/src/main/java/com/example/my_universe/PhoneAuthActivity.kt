@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.example.my_universe.MyApplication.Companion.auth
 import com.example.my_universe.databinding.ActivityPhoneAuthBinding
 import com.example.my_universe.model.User
+import com.example.my_universe.utils.SharedPreferencesManager
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -33,6 +34,9 @@ class PhoneAuthActivity : AppCompatActivity() {
         database = Firebase.database.reference
         // 뒤로가기 클릭시
         binding.backBtn.setOnClickListener {
+            SharedPreferencesManager.saveToken(this, null)
+            SharedPreferencesManager.saveLoginStatus(this, false)
+            auth.signOut()
             finish()
         }
         // 인증요청 버튼 클릭시
@@ -64,9 +68,12 @@ class PhoneAuthActivity : AppCompatActivity() {
                         val name = intent.getStringExtra("name")
                         val user : User = User(name, password, email, phoneNum)
                         database.child("users").setValue(user)
+                        SharedPreferencesManager.saveLoginStatus(this, true)
                         finish()
                     } else {
-                        // 인증 실패
+                        // 인증 실패, 구글 인증한 사용자 정보 비우기
+                        auth.signOut()
+                        SharedPreferencesManager.saveToken(this, null)
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {
                             // 사용자가 입력한 인증번호가 유효하지 않은 경우
                             Log.e("로그인 과정 중 전화번호 인증", "유효하지 않은 인증번호입니다.")
@@ -79,6 +86,13 @@ class PhoneAuthActivity : AppCompatActivity() {
                 }
         }
     }
+//    override fun onPause() {
+//        super.onPause()
+//        SharedPreferencesManager.saveToken(this, null)
+//        SharedPreferencesManager.saveLoginStatus(this, false)
+//        auth.signOut()
+//        finish()
+//    }
 
     // 콜백함수 설정 부분.
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {

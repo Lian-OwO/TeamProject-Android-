@@ -6,7 +6,6 @@ data class BoardItem(
     val title: String?,
     val subTitle: String?,
     val content: String?,
-    val timestamp: Timestamp,
     val images: MutableMap<String, String?> // 수정된 부분
 ) {
     // 추가된 부분: 이미지 추가하는 메서드

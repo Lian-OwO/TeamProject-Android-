@@ -14,11 +14,16 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.my_universe.MyApplication.Companion.auth
 import com.example.my_universe.MyApplication.Companion.db
 import com.example.my_universe.databinding.ActivityBoardWriteBinding
 import com.example.my_universe.model.BoardItem
 import com.example.my_universe.utils.MyUtil
+import com.example.my_universe.utils.SharedPreferencesManager
 import com.google.firebase.Timestamp
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.util.UUID
 
@@ -173,7 +178,6 @@ class BoardWriteActivity : AppCompatActivity() {
                 title = binding.categoryTitle.textEdit.text.toString(),
                 subTitle = binding.categorySubTitle.textEdit.text.toString(),
                 content = binding.textContent.text.toString(),
-                timestamp = Timestamp.now(),
                 images = mutableMapOf()
             )
 
@@ -196,16 +200,25 @@ class BoardWriteActivity : AppCompatActivity() {
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful) {
                             Log.d("kjh", "업로드 성공!")
-                            val boardCollection = db.collection("boardList")
-                            boardCollection.add(board)
-                                .addOnSuccessListener { documentReference ->
-                                    // 성공 시 처리
-                                    Log.d("게시글 업로드", "DocumentSnapshot added with ID: ${documentReference.id}")
+                            val token : String = "Bearer " + SharedPreferencesManager.getToken(this@BoardWriteActivity).toString()
+                            val networkService = (applicationContext as MyApplication).resourceService
+                            val testCall = networkService.getBoardUpload(token);
+                            Log.d("서버 통신, 넘겨준 토큰 값", token)
+                            testCall.enqueue(object : Callback<String> {
+                                override fun onResponse(
+                                    call: Call<String>,
+                                    response: Response<String>
+                                ) {
+                                    Log.d("서버 통신, 넘겨준 토큰 값", SharedPreferencesManager.getToken(this@BoardWriteActivity).toString())
+                                    Log.d("서버 통신, 받아온 데이터", response.body().toString())
                                 }
-                                .addOnFailureListener { e ->
-                                    // 실패 시 처리
-                                    Log.w("게시글 업로드", "Error adding document", e)
+
+                                override fun onFailure(call: Call<String>, t: Throwable) {
+                                    Log.d("서버 통신, 받아온 데이터", "통신 실패")
+                                    call.cancel()
                                 }
+
+                            })
                             finish()
                         } else {
                             // 업로드 실패

@@ -56,6 +56,13 @@ class JoinActivity : AppCompatActivity() {
 //            val database = Firebase.database
 //            val myRef = database.getReference("users")
 
+//            database.child("users").setValue(user)
+//                .addOnSuccessListener {
+//                    Log.d("scb", "Data uploaded successfully")
+//                }
+//                .addOnFailureListener { e ->
+//                    Log.e("scb", "Error uploading data: ${e.message}", e)
+//                }
 //            database.child("users").setValue(user) <-- 이게 되는 코드
 //            myRef.setValue(user)
 //            myRef.setValue("abc" , "def")
