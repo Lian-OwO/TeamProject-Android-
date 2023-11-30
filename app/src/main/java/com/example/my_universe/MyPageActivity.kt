@@ -102,8 +102,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.my_universe.MainFragment.HomeFragment
 import com.example.my_universe.MainFragment.MapFragment
-import com.example.my_universe.MainFragment.Test1Fragment
+import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMyPageBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -168,10 +169,10 @@ class MyPageActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
-                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
-                    "myPage" -> {
+                    "홈" -> transaction.replace(R.id.tabContent, HomeFragment())
+                    "위시" -> transaction.replace(R.id.tabContent, WishFragment())
+                    "맵" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "마이" -> {
                         //MyPageActivity로 이동
                         startActivity(Intent(this@MyPageActivity, MyPageActivity::class.java))
                     }
