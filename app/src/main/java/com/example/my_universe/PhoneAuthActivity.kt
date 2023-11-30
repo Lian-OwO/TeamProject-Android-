@@ -86,13 +86,13 @@ class PhoneAuthActivity : AppCompatActivity() {
                 }
         }
     }
-    override fun onPause() {
-        super.onPause()
-        SharedPreferencesManager.saveToken(this, null)
-        SharedPreferencesManager.saveLoginStatus(this, false)
-        auth.signOut()
-        finish()
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        SharedPreferencesManager.saveToken(this, null)
+//        SharedPreferencesManager.saveLoginStatus(this, false)
+//        auth.signOut()
+//        finish()
+//    }
 
     // 콜백함수 설정 부분.
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
