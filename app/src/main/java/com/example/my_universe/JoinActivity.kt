@@ -50,6 +50,12 @@ class JoinActivity : AppCompatActivity() {
 //            val myRef = database.getReference("users")
 
             database.child("users").setValue(user)
+                .addOnSuccessListener {
+                    Log.d("scb", "Data uploaded successfully")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("scb", "Error uploading data: ${e.message}", e)
+                }
 //            myRef.setValue(user)
 //            myRef.setValue("abc" , "def")
 

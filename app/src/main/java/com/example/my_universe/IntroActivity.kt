@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.databinding.ActivityIntroBinding
 
 class IntroActivity : AppCompatActivity() {
-lateinit var binding: ActivityIntroBinding
+    lateinit var binding: ActivityIntroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIntroBinding.inflate(layoutInflater)
