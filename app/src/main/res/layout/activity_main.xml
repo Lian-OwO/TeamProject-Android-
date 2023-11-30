@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -42,9 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:cardCornerRadius="50dp"
+        app:cardCornerRadius="100dp"
         />
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCardView"
@@ -56,16 +52,18 @@
         app:cardElevation="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView">
+        app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView"
+        >
 
         <TextView
             android:id="@+id/customTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="         어디로 여행 가세요?   어디든지 | 언제든 | 게스트"
+            android:text="어디로 여행 가세요?   어디든지 | 언제든 | 게스트"
             android:textColor="#ccc"
             android:gravity="center"
             android:paddingTop="16dp"
+            android:paddingLeft="25dp"
             />
 
         <androidx.appcompat.widget.SearchView
@@ -73,9 +71,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="true"
-            app:queryHint="어디로 여행 가세요?" />
+            />
+        <!-- app:queryHint="어디로 여행 가세요?" 삭제 -->
 
     </androidx.cardview.widget.CardView>
+
+
 
     <!-- TextView를 감싸는 LinearLayout 추가 -->
     <LinearLayout
@@ -87,25 +88,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchCardView">
 
-        <!-- TextView -->
-<!--        <TextView-->
-<!--            android:id="@+id/customTextView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="이달의 추천 여행지"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textColor="@android:color/black"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="8dp"-->
-<!--            />-->
-
-
         <FrameLayout
             android:id="@+id/tabContent"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="600dp"
             android:layout_weight="1"
-
             />
 
     </LinearLayout>
