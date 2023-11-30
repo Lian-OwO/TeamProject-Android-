@@ -19,6 +19,7 @@ import com.example.my_universe.MyApplication.Companion.db
 import com.example.my_universe.databinding.ActivityBoardWriteBinding
 import com.example.my_universe.model.BoardItem
 import com.example.my_universe.utils.MyUtil
+import com.example.my_universe.utils.SharedPreferencesManager
 import com.google.firebase.Timestamp
 import retrofit2.Call
 import retrofit2.Callback
@@ -199,14 +200,16 @@ class BoardWriteActivity : AppCompatActivity() {
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful) {
                             Log.d("kjh", "업로드 성공!")
+                            val token : String = "Bearer " + SharedPreferencesManager.getToken(this@BoardWriteActivity).toString()
                             val networkService = (applicationContext as MyApplication).resourceService
-                            val testCall = networkService.getBoardUpload(auth.currentUser?.uid.toString());
+                            val testCall = networkService.getBoardUpload(token);
+                            Log.d("서버 통신, 넘겨준 토큰 값", token)
                             testCall.enqueue(object : Callback<String> {
                                 override fun onResponse(
                                     call: Call<String>,
                                     response: Response<String>
                                 ) {
-                                    Log.d("서버 통신, 넘겨준 토큰 값", "d")
+                                    Log.d("서버 통신, 넘겨준 토큰 값", SharedPreferencesManager.getToken(this@BoardWriteActivity).toString())
                                     Log.d("서버 통신, 받아온 데이터", response.body().toString())
                                 }
 
