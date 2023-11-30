@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.example.my_universe.API.INetworkService
 import com.example.my_universe.API.NaverNetworkService
+import com.example.my_universe.retrofit.ResourceServerNetwork
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthWebException
@@ -26,6 +27,7 @@ class MyApplication : MultiDexApplication() {
     // 아직 초기화 안해서 그럼.
     val networkService : INetworkService
     val map_networkService : NaverNetworkService
+    val resourceService : ResourceServerNetwork
     // 2)통신할 서버의 URL 주소를 등록함.
     val retrofit : Retrofit
         get() = Retrofit.Builder()
@@ -44,6 +46,7 @@ class MyApplication : MultiDexApplication() {
     init {
         networkService = retrofit.create(INetworkService::class.java)
         map_networkService = retrofitMap.create(NaverNetworkService::class.java)
+        resourceService = retrofit.create(ResourceServerNetwork::class.java)
     }
     companion object {
         // 원래는 자바에서, 해당 클래스의 멤버를 사용하는 방법2가지.
