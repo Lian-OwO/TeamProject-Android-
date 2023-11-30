@@ -77,24 +77,40 @@
     </androidx.cardview.widget.CardView>
 
 
-
-    <!-- TextView를 감싸는 LinearLayout 추가 -->
     <LinearLayout
-        android:id="@+id/textViewContainer"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchCardView">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
-        <FrameLayout
-            android:id="@+id/tabContent"
+        <!-- TextView를 감싸는 LinearLayout 추가 -->
+        <LinearLayout
+            android:id="@+id/textViewContainer"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:layout_weight="1"
-            />
+            android:layout_height="500dp"
+            android:orientation="vertical"
+            android:layout_marginTop="220dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchCardView">
 
+            <FrameLayout
+                android:id="@+id/tabContent"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
     </LinearLayout>
 
 

@@ -56,9 +56,47 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
                 val cameraPosition = CameraPosition( // 카메라 위치 변경
                     LatLng(lat,lnt), // 위치 지정
-                    10.0 // 줌 레벨
+                    16.0 // 줌 레벨
                 )
                 naverMap?.cameraPosition = cameraPosition
+
+
+        // 두 번째 마커
+        val lat2 = 33.458271995622
+        val lng2 = 126.47883418947458
+        val marker2 = Marker()
+        marker2.position = LatLng(lat2, lng2)
+        marker2.map = naverMap
+
+        // 마커 위치 정보 리스트
+        val markerPositions = listOf(
+            LatLng(35.1560157, 129.0594088),
+            LatLng(35.1575, 129.0600),
+            LatLng(35.1562749, 129.0582212),
+            LatLng(35.1552703, 129.0601868),
+            LatLng(35.1557237, 129.0597270),
+            LatLng(35.1549210, 129.0589133),
+            LatLng(35.1556577, 129.0581568),
+            LatLng(35.1560634, 129.0583441),
+            LatLng(35.1565990, 129.0601929),
+            LatLng(35.1569666, 129.0589334),
+            LatLng(35.1569750, 129.0612130),
+            LatLng(35.1555571, 129.0594493),
+            LatLng(35.1570440, 129.0599122),
+            LatLng(35.1558323, 129.0602433),
+            LatLng(35.1546588, 129.0600349),
+            LatLng(35.1565704, 129.0584100)
+            // 추가적인 위치 정보는 필요에 따라 계속 추가할 수 있습니다.
+        )
+
+// 반복문을 통해 마커를 추가
+        for (position in markerPositions) {
+            val marker = Marker()
+            marker.position = position
+            marker.map = naverMap
+        }
+
+
 
         // 데이터 정보에서, 위도 , 경도 값 받아와서 입력.
         // 더미로 .
