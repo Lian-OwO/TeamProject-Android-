@@ -176,8 +176,12 @@
         android:text="예약내역"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-        app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
@@ -191,32 +195,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/home"
-            android:text="home"/>
+            android:text="홈"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/wish"
-            android:text="wish"/>
+            android:text="위시"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/map"
-            android:text="map"/>
+            android:text="맵"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/review"
-            android:text="review"/>
+            android:text="리뷰"/>
 
         <com.google.android.material.tabs.TabItem
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/profile"
-            android:text="myPage"/>
+            android:text="마이"/>
     </com.google.android.material.tabs.TabLayout>
 
 
