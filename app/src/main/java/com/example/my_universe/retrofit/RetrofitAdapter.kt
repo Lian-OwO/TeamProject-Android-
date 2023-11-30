@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitAdapter {
     val BASE_URL : String = "http://10.100.104.53:80"
-    var testService: TestNetwork
+    var testService: ResourceServerNetwork
 
     val retrofit: Retrofit
         get() = Retrofit.Builder()
@@ -13,6 +13,6 @@ class RetrofitAdapter {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     init {
-        testService = retrofit.create(TestNetwork::class.java)
+        testService = retrofit.create(ResourceServerNetwork::class.java)
     }
 }

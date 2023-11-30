@@ -8,21 +8,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import com.example.my_universe.MyApplication.Companion.auth
-import com.example.my_universe.MyApplication.Companion.email
 import com.example.my_universe.databinding.ActivityLoginFormBinding
-import com.example.my_universe.retrofit.RetrofitAdapter
+import com.example.my_universe.utils.SharedPreferencesManager
 import com.firebase.ui.auth.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.play.integrity.internal.t
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class LoginFormActivity : AppCompatActivity() {
@@ -46,6 +39,19 @@ class LoginFormActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) {
                             task ->
                         if(task.isSuccessful){
+                            val user = auth.currentUser
+                            user?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
+                                if (tokenTask.isSuccessful) {
+                                    val accessToken = tokenTask.result?.token
+                                    // 여기서 액세스 토큰을 사용하여 필요한 작업 수행
+                                    SharedPreferencesManager.saveToken(this, accessToken)
+                                    SharedPreferencesManager.saveLoginStatus(this, false)
+                                    Log.d("로그인 후 토큰 가져오기", SharedPreferencesManager.getToken(this).toString())
+                                    Log.d("로그인 후 토큰 가져오기", "Access Token: $accessToken")
+                                } else {
+                                    Log.d("로그인 후 토큰 가져오기", "Failed to get access token")
+                                }
+                            }
                             Toast.makeText(this, "본인인증을 시작합니다.", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@LoginFormActivity, PhoneAuthActivity::class.java)
                             startActivity(intent)
@@ -86,6 +92,9 @@ class LoginFormActivity : AppCompatActivity() {
         }
 
         binding.backBtn.setOnClickListener {
+            SharedPreferencesManager.saveToken(this, null)
+            SharedPreferencesManager.saveLoginStatus(this, false)
+            auth.signOut()
             finish()
         }
 
