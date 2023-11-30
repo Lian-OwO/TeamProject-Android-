@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.example.my_universe.MyApplication
 import com.example.my_universe.R
 import com.example.my_universe.databinding.FragmentMapBinding
-import com.example.my_universe.databinding.FragmentTest1Binding
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.NaverMap
@@ -47,9 +46,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(naverMap: NaverMap) {
         val marker = Marker()
 //                val lat: Double = 33.4840605
-//        val lnt: Double =  126.4160275
-val        lat = 33.458271995622
-   val     lnt = 126.47883418947458
+//                val lnt: Double =  126.4160275
+//                val        lat = 33.458271995622
+//                val     lnt = 126.47883418947458
+        val lat = 35.1560157
+        val lnt = 129.0594088
                 marker.setPosition(LatLng(lat, lnt))
                 marker.setMap(naverMap)
 
