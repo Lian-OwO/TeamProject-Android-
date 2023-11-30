@@ -1,51 +1,59 @@
-<!-- item_image.xml -->
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:padding="5dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
 
-    <!-- 뷰페이저 넣기 -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/tapFragSliderviewPager1"
+    <!-- CardView 사용 -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-
-    <!-- 상대 레이아웃 사용 -->
-    <RelativeLayout
-        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@id/tapFragSliderviewPager1">
+        android:layout_margin="5dp"
+        android:elevation="2dp">
 
-        <!-- 첫 번째 TextView -->
-        <TextView
-            android:id="@+id/testText"
-            android:layout_width="wrap_content"
+        <!-- 상대 레이아웃 사용 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="제목"
-            android:layout_marginBottom="5dp"/>
+            android:padding="16dp">
 
-        <!-- 두 번째 TextView -->
-        <TextView
-            android:id="@+id/descriptionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내용"
-            android:layout_below="@id/testText"
-            android:layout_marginTop="5dp"/>
+            <!-- 뷰페이저 넣기 -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/tapFragSliderviewPager1"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
 
-        <!-- 아이콘 추가 -->
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/like"
-            android:layout_below="@id/descriptionText"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="5dp"/>
+            <!-- 첫 번째 TextView -->
+            <TextView
+                android:id="@+id/testText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tapFragSliderviewPager1"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="5dp"
+                android:text="제목"
+                android:textStyle="bold" />
 
-    </RelativeLayout>
+            <!-- 두 번째 TextView -->
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/testText"
+                android:layout_marginTop="5dp"
+                android:text="내용"
+                android:textStyle="bold" />
+
+            <!-- 아이콘 추가 -->
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/descriptionText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/like" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

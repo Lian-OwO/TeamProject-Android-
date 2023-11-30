@@ -1,7 +1,9 @@
 package com.example.my_universe
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.MyApplication.Companion.rdb
 import com.example.my_universe.databinding.ActivityJoinBinding
@@ -17,6 +19,7 @@ class JoinActivity : AppCompatActivity() {
     lateinit var password : String
     lateinit var passwordCheck : String
     lateinit var name : String
+    lateinit var phoneNum : String
     private lateinit var database: DatabaseReference
 // ...
 
@@ -25,8 +28,6 @@ class JoinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
 
         database = Firebase.database.reference
@@ -38,12 +39,18 @@ class JoinActivity : AppCompatActivity() {
             password = binding.joinPassword.text.toString()
             passwordCheck = binding.joinPwck.text.toString()
             name = binding.joinName.text.toString()
+            phoneNum = ""
 
-
-            val user = User(
-                name,email,password,passwordCheck
-            )
-
+            if(password == passwordCheck) {
+                val intent = Intent(this@JoinActivity, PhoneAuthActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
+                intent.putExtra("name", name)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this@JoinActivity, "패스워드가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+            }
 
 //             Write a message to the database
 //            val database = Firebase.database
@@ -56,6 +63,7 @@ class JoinActivity : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Log.e("scb", "Error uploading data: ${e.message}", e)
                 }
+//            database.child("users").setValue(user) <-- 이게 되는 코드
 //            myRef.setValue(user)
 //            myRef.setValue("abc" , "def")
 

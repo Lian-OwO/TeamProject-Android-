@@ -46,9 +46,8 @@ class LoginFormActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) {
                             task ->
                         if(task.isSuccessful){
-                            val accessToken = auth.currentUser?.getIdToken(false)?.result?.token
-                            Toast.makeText(this, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@LoginFormActivity, MainActivity::class.java)
+                            Toast.makeText(this, "본인인증을 시작합니다.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@LoginFormActivity, PhoneAuthActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
