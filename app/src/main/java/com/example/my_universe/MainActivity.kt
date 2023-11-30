@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_universe.MainFragment.MapFragment
-import com.example.my_universe.MainFragment.Test1Fragment
+import com.example.my_universe.MainFragment.HomeFragment
+import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
 import com.example.my_universe.recycler.CategoryAdapter
@@ -37,10 +38,10 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
-                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
-                    "myPage" -> {
+                    "홈" -> transaction.replace(R.id.tabContent, HomeFragment())
+                    "위시" -> transaction.replace(R.id.tabContent, WishFragment())
+                    "맵" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "마이" -> {
                         //MyPageActivity로 이동
                         startActivity(Intent(this@MainActivity, MyPageActivity::class.java))
                     }
@@ -57,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
 
 
     }
@@ -84,26 +84,19 @@ class MainActivity : AppCompatActivity() {
         categoryRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-
-
-
         val categoryItems = listOf(
-            CategoryItem(R.drawable.category, "강서구"),
-            CategoryItem(R.drawable.category, "사하구"),
-            CategoryItem(R.drawable.category, "사상구"),
-            CategoryItem(R.drawable.category, "북구"),
-            CategoryItem(R.drawable.category, "부산진구"),
-            CategoryItem(R.drawable.category, "동래구"),
-            CategoryItem(R.drawable.category, "금정구"),
-            CategoryItem(R.drawable.category, "해운대구"),
-            CategoryItem(R.drawable.category, "기장군"),
+            CategoryItem(R.drawable.category_gangseo, "강서구"),
+            CategoryItem(R.drawable.category_geumjeong, "금정구"),
+            CategoryItem(R.drawable.category_gijang, "기장군"),
+            CategoryItem(R.drawable.category_dongnae, "동래구"),
+            CategoryItem(R.drawable.category_busanjin, "부산진구"),
+            CategoryItem(R.drawable.category_saha, "사하구"),
+            CategoryItem(R.drawable.category_suyeong, "수영구"),
+            CategoryItem(R.drawable.category_haeundae, "해운대구"),
         )
 
         val categoryAdapter = CategoryAdapter(categoryItems)
         categoryRecyclerView.adapter = categoryAdapter
-
-
-
     }
 
 
