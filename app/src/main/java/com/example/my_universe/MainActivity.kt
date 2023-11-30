@@ -9,8 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.HomeFragment
+import com.example.my_universe.MainFragment.MapFragment
+
 import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
