@@ -102,7 +102,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.my_universe.MainFragment.MapFragment
+import com.example.my_universe.MainFragment.Test1Fragment
 import com.example.my_universe.databinding.ActivityMyPageBinding
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -153,6 +156,38 @@ class MyPageActivity : AppCompatActivity() {
             // 로그아웃 버튼 숨기기
             binding.logoutButton.visibility = View.GONE
         }
+
+        val tabLayout = binding.tabs
+        setContentView(binding.root)
+
+
+
+        tabLayout.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener {
+            //익명 클래스 정의하고, 해당 이벤트 리스너 구현하면, 의무적으로,
+            // 재정의 해야하는 함수3개 있음.
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val transaction = supportFragmentManager.beginTransaction()
+                when(tab?.text) {
+                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "wish" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "myPage" -> {
+                        //MyPageActivity로 이동
+                        startActivity(Intent(this@MyPageActivity, MyPageActivity::class.java))
+                    }
+                }
+                transaction.commit()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Toast.makeText(this@MyPageActivity,"onTabUnselected", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                Toast.makeText(this@MyPageActivity,"onTabReselected", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }
 
