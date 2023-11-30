@@ -26,27 +26,12 @@ import retrofit2.Response
 
 class LoginFormActivity : AppCompatActivity() {
     lateinit var binding : ActivityLoginFormBinding
+    lateinit var id : String
+    lateinit var pw : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if(MyApplication.checkAuth()){
-            Log.d("lsy","로그인 인증이 됨")
-            auth.currentUser?.getIdToken(false)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val token = task.result?.token
-                        Log.d("로그인 체크", "로그인이 되어있습니다.")
-                    } else {
-                        val exception = task.exception
-                    }
-                }
-        } else {
-            Log.d("로그인 체크","로그인 되어있지 않습니다.")
-            // 인증 되면, mode에 따라 보여주는 함수를 동작 시키기
-            Toast.makeText(this, "로그인 후 메인 페이지로 이동합니다.", Toast.LENGTH_SHORT).show()
-        }
 
         val requestLauncher = registerForActivityResult(
             // 후처리 하는 함수가 정해져 있는데, 이함수를 인증 , 권한 확인용
@@ -60,36 +45,37 @@ class LoginFormActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) {
                             task ->
                         if(task.isSuccessful){
-                            // 액세스 토큰 가져오기
-                            Log.d("로그인 레트로핏 체크", "실행됨")
                             val accessToken = auth.currentUser?.getIdToken(false)?.result?.token
-                            Log.d("로그인 레트로핏", "${accessToken}")
-                            Log.d("로그인 레트로핏", "${task.result.user?.email.toString()}")
-                            val testService = RetrofitAdapter().testService
-                            val testCall = testService.getTest("Bearer $accessToken", task.result.user?.email.toString())
-                            testCall.enqueue(object : Callback<Map<String, String>> {
-                                override fun onResponse(call: Call<Map<String, String>>, response: Response<Map<String, String>>) {
-                                    Log.d("로그인 레트로핏", "${response?.code()}")
-
-                                }
-                                override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
-                                    // 데이터를 못 받았을 때 수행되는 함수
-                                    Log.d("로그인 레트로핏", "데이터를 받는데 실패함")
-                                    Log.d("로그인 레트로핏 실패", t.message.toString())
-                                    call.cancel()
-                                }
-                            })
-                            Toast.makeText(this, "로그인 됨", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@LoginFormActivity, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         } else {
-                            Toast.makeText(this, "오류가 발생했습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                         }
                     }
             } catch (e: ApiException){
                 Log.d("로그인 ApiException", e.statusCode.toString())
+                Toast.makeText(this, "로그인에 실패했습니다. 관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        binding.googleAuthInBtn.setOnClickListener {
+        // 로그인 버튼 클릭시 실행될 함수
+        binding.SignInBtn.setOnClickListener {
+            id = binding.inputID.text.toString()
+            pw = binding.inputID.text.toString()
+
+            // 이 부분부터 실시간 DB와 데이터 비교 후 로그인 처리하기.
+        }
+        // 회원가입 버튼 클릭시 실행될 함수
+        binding.SignUpBtn.setOnClickListener {
+            // 로그인 화면에서 회원가입 화면으로의 전환 코드
+            val intent = Intent(this@LoginFormActivity, JoinActivity::class.java)
+            Toast.makeText(this, "회원가입을 진행합니다.", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+        }
+
+        binding.googleLoginBtn.setOnClickListener {
             val gso = GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -99,16 +85,10 @@ class LoginFormActivity : AppCompatActivity() {
             requestLauncher.launch(signInIntent)
         }
 
-        binding.SignOutBtn.setOnClickListener {
-            auth.signOut()
-            val currentUser = auth.currentUser
-            if (currentUser == null) {
-                Toast.makeText(this, "로그아웃 됨", Toast.LENGTH_SHORT).show()
-                Log.d("로그아웃 검증", "사용자가 로그아웃되었습니다.")
-            } else {
-                Log.d("로그아웃 검증", "사용자가 로그아웃되지 않았습니다.")
-            }
+        binding.backBtn.setOnClickListener {
+            finish()
         }
+
     }
     fun onRegisterClick(view: View) {
         val intent = Intent(this, JoinActivity::class.java)
