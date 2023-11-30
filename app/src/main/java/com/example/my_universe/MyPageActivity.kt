@@ -96,8 +96,10 @@
 
 package com.example.my_universe
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.databinding.ActivityMyPageBinding
@@ -125,11 +127,31 @@ class MyPageActivity : AppCompatActivity() {
 
             // TextView에 이메일 정보 설정
             binding.idTextView.text = "이메일 : $email"
+            // 로그아웃 버튼 클릭 이벤트 처리
+            binding.logoutButton.setOnClickListener {
+                // Firebase Authentication에서 로그아웃
+                auth.signOut()
+
+                // 로그아웃 후 로그인 화면으로 이동 또는 다른 처리 수행
+                // 예시: 로그인 화면으로 이동
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+                }
+            // 로그인 버튼 숨기기
+            binding.loginButton.visibility = View.GONE
         } else {
             // 사용자가 로그인하지 않은 상태
             // 로그인 화면으로 이동하거나 다른 처리를 수행할 수 있습니다.
-            Log.d("scb", "로그인 상태 아님")
-            Toast.makeText(this, "로그인 상태가 아님", Toast.LENGTH_SHORT).show()
+            binding.loginButton.visibility = View.VISIBLE
+            binding.loginButton.setOnClickListener {
+                // 로그인 화면으로 이동 또는 다른 처리 수행
+                startActivity(Intent(this, LoginFormActivity::class.java))
+                finish()
+                Log.d("scb", "로그인 상태 아님")
+                Toast.makeText(this, "로그인 상태가 아님", Toast.LENGTH_SHORT).show()
+            }
+            // 로그아웃 버튼 숨기기
+            binding.logoutButton.visibility = View.GONE
         }
     }
 }

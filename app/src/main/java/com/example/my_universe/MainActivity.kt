@@ -38,9 +38,13 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when(tab?.text) {
-                    "홈" -> transaction.replace(R.id.tabContent, Test1Fragment())
-                    "위시" -> transaction.replace(R.id.tabContent, WishFragment())
-                    "맵" -> transaction.replace(R.id.tabContent, MapFragment())
+
+                    "home" -> transaction.replace(R.id.tabContent, Test1Fragment())
+                    "wish" -> transaction.replace(R.id.tabContent, WishFragment())
+                    "map" -> transaction.replace(R.id.tabContent, MapFragment())
+                    "myPage" -> {
+                        //MyPageActivity로 이동
+                        startActivity(Intent(this@MainActivity, MyPageActivity::class.java))            
                 }
                 transaction.commit()
             }
