@@ -7,9 +7,7 @@ import com.example.my_universe.MyApplication.Companion.rdb
 import com.example.my_universe.databinding.ActivityJoinBinding
 import com.example.my_universe.model.User
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -47,11 +45,11 @@ class JoinActivity : AppCompatActivity() {
             )
 
 
-            // Write a message to the database
+//             Write a message to the database
 //            val database = Firebase.database
 //            val myRef = database.getReference("users")
-//
-////            database.child("users").child(userId).setValue(user)
+
+            database.child("users").setValue(user)
 //            myRef.setValue(user)
 //            myRef.setValue("abc" , "def")
 
@@ -63,7 +61,7 @@ class JoinActivity : AppCompatActivity() {
 
 //            val user2 = User(name, email)
 
-            database.child("users").child("${email}").setValue(user)
+//            database.child("users").child("1").setValue(user)
 
             Log.d("scb", "name : ${name}")
             Log.d("scb", "password : ${password}")
