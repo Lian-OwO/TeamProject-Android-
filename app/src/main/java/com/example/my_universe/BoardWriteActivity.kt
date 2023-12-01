@@ -200,7 +200,7 @@ class BoardWriteActivity : AppCompatActivity() {
                     .addOnCompleteListener{task ->
                         if (task.isSuccessful) {
                             Log.d("kjh", "업로드 성공!")
-                            val token : String = "Bearer " + SharedPreferencesManager.getToken(this@BoardWriteActivity).toString()
+                            val token : String = "Bearer " + auth.currentUser?.uid
                             val networkService = (applicationContext as MyApplication).resourceService
                             val testCall = networkService.getBoardUpload(token);
                             Log.d("서버 통신, 넘겨준 토큰 값", token)
@@ -209,7 +209,7 @@ class BoardWriteActivity : AppCompatActivity() {
                                     call: Call<String>,
                                     response: Response<String>
                                 ) {
-                                    Log.d("서버 통신, 넘겨준 토큰 값", SharedPreferencesManager.getToken(this@BoardWriteActivity).toString())
+                                    auth.currentUser?.let { it1 -> Log.d("서버 통신, 넘겨준 토큰 값", it1.uid) }
                                     Log.d("서버 통신, 받아온 데이터", response.body().toString())
                                 }
 
