@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkLoginStatus() {
         val currentUser: FirebaseUser? = auth.currentUser
-        isLoggedIn = currentUser != null
+        isLoggedIn = (auth.currentUser != null)
         invalidateOptionsMenu() // 메뉴 다시 그리기
     }
 
@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity() {
                 auth.signOut()
                 // 로그아웃 후 로그인 화면으로 이동 또는 다른 처리 수행
                 startActivity(Intent(this, LoginFormActivity::class.java))
-                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)
