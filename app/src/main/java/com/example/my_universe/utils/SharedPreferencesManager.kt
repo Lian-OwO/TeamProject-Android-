@@ -5,18 +5,18 @@ import android.content.SharedPreferences
 
 object SharedPreferencesManager {
 
-    private const val KEY_TOKEN = "accessToken"
+    private const val KEY_Email = "email"
     private const val KEY_IS_LOGGED_IN = "isLoggedIn"
 
     // 액세스 토큰 저장
-    fun saveToken(context: Context, accessToken : String?) {
-        val editor: SharedPreferences.Editor = context.getSharedPreferences(KEY_TOKEN, Context.MODE_PRIVATE).edit()
-        editor.putString(KEY_TOKEN, accessToken)
+    fun saveEmail(context: Context, email : String?) {
+        val editor: SharedPreferences.Editor = context.getSharedPreferences(KEY_Email, Context.MODE_PRIVATE).edit()
+        editor.putString(KEY_Email, email)
         editor.apply()
     }
-    fun getToken(context: Context): String? {
-        val sharedPreferences = context.getSharedPreferences(KEY_TOKEN, Context.MODE_PRIVATE)
-        return sharedPreferences.getString(KEY_TOKEN, null)
+    fun getEmail(context: Context): String? {
+        val sharedPreferences = context.getSharedPreferences(KEY_Email, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(KEY_Email, null)
     }
     // 로그인 상태 저장
     fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {

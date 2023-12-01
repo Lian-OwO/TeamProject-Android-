@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.my_universe.MyApplication.Companion.auth
+import com.example.my_universe.MyApplication.Companion.email
 import com.example.my_universe.databinding.ActivityLoginFormBinding
 import com.example.my_universe.utils.SharedPreferencesManager
 import com.firebase.ui.auth.R
@@ -44,9 +45,7 @@ class LoginFormActivity : AppCompatActivity() {
                                 if (tokenTask.isSuccessful) {
                                     val accessToken = tokenTask.result?.token
                                     // 여기서 액세스 토큰을 사용하여 필요한 작업 수행
-                                    SharedPreferencesManager.saveToken(this, accessToken)
                                     SharedPreferencesManager.saveLoginStatus(this, false)
-                                    Log.d("로그인 후 토큰 가져오기", SharedPreferencesManager.getToken(this).toString())
                                     Log.d("로그인 후 토큰 가져오기", "Access Token: $accessToken")
                                 } else {
                                     Log.d("로그인 후 토큰 가져오기", "Failed to get access token")
@@ -54,7 +53,13 @@ class LoginFormActivity : AppCompatActivity() {
                             }
                             Toast.makeText(this, "본인인증을 시작합니다.", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@LoginFormActivity, PhoneAuthActivity::class.java)
+                            intent.putExtra("email", auth.currentUser?.email.toString())
+                            Log.d("로그인 전화인증 전", auth.currentUser?.email.toString())
+                            intent.putExtra("password", "undefined")
+                            intent.putExtra("name", "undefined")
                             startActivity(intent)
+                            Log.d("로그인 구글 인증 직후", auth.currentUser?.email.toString())
+                            Log.d("로그인 구글 인증 직후", auth.currentUser?.uid.toString())
                             finish()
                         } else {
                             Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -92,7 +97,6 @@ class LoginFormActivity : AppCompatActivity() {
         }
 
         binding.backBtn.setOnClickListener {
-            SharedPreferencesManager.saveToken(this, null)
             SharedPreferencesManager.saveLoginStatus(this, false)
             auth.signOut()
             finish()
