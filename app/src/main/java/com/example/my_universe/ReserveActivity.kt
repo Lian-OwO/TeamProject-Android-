@@ -6,15 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.my_universe.databinding.ActivityAppointmentBinding
-import com.example.my_universe.recycler.AppointmentAdapter
-import com.example.my_universe.recycler.AppointmentslideAdapter1
+import com.example.my_universe.databinding.ActivityReserveBinding
+import com.example.my_universe.recycler.ReserveAdapter
+import com.example.my_universe.recycler.ReserveslideAdapter1
 
-class AppointmentActivity : AppCompatActivity() {
-    lateinit var binding: ActivityAppointmentBinding
+class ReserveActivity : AppCompatActivity() {
+    lateinit var binding: ActivityReserveBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAppointmentBinding.inflate(layoutInflater)
+        binding = ActivityReserveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val datas = mutableListOf<String>()
@@ -28,27 +28,27 @@ class AppointmentActivity : AppCompatActivity() {
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.recyclerView.layoutManager = layoutManager
 
-        binding.recyclerView.adapter = AppointmentAdapter(datas)
+        binding.recyclerView.adapter = ReserveAdapter(datas)
         binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
 
 
 ////////// '뒤로가기' 버튼
         binding.buttonReserveMain.setOnClickListener {
-            val intent = Intent(this@AppointmentActivity, MainActivity::class.java)
+            val intent = Intent(this@ReserveActivity, MainActivity::class.java)
             startActivity(intent)
         }
 
 ////////// '예약하기' 버튼
         binding.buttonReserve.setOnClickListener {
-            val intent = Intent(this@AppointmentActivity, AppointmentResultActivity::class.java)
+            val intent = Intent(this@ReserveActivity, ReserveResultActivity::class.java)
             startActivity(intent)
         }
 
 
 
 ////////// 이미지 슬라이드
-        binding.viewPager01.adapter = AppointmentslideAdapter1(this)
+        binding.viewPager01.adapter = ReserveslideAdapter1(this)
         // 처음, 마지막 페이지간 양방향 이동 가능
         binding.viewPager01.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             var currentState = 0

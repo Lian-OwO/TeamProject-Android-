@@ -6,21 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager2.widget.ViewPager2
 import com.example.my_universe.MainFragment.MapFragment
-import com.example.my_universe.databinding.ActivityAppointmentResultBinding
-import com.example.my_universe.recycler.AppointmentslideAdapter2
+import com.example.my_universe.databinding.ActivityReserveResultBinding
+import com.example.my_universe.recycler.ReserveslideAdapter2
 
-class AppointmentResultActivity : AppCompatActivity() {
-    lateinit var binding: ActivityAppointmentResultBinding
+class ReserveResultActivity : AppCompatActivity() {
+    lateinit var binding: ActivityReserveResultBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAppointmentResultBinding.inflate(layoutInflater)
+        binding = ActivityReserveResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
 
 ////////// '숙소문의' 버튼
         binding.buttonReserveReturn.setOnClickListener {
-            val intent = Intent(this@AppointmentResultActivity, AppointmentActivity::class.java)
+            val intent = Intent(this@ReserveResultActivity, ReserveActivity::class.java)
             startActivity(intent)
         }
 
@@ -39,7 +39,7 @@ class AppointmentResultActivity : AppCompatActivity() {
 
 
 ////////// 이미지 슬라이드
-        binding.viewPager02.adapter = AppointmentslideAdapter2(this)
+        binding.viewPager02.adapter = ReserveslideAdapter2(this)
         // 처음, 마지막 페이지간 양방향 이동 가능
         binding.viewPager02.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             var currentState = 0
