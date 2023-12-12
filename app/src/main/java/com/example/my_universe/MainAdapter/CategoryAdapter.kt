@@ -1,15 +1,27 @@
-package com.example.my_universe.recycler
+package com.example.my_universe.MainAdapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView  // 추가
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_universe.R
-import com.example.my_universe.model.CategoryItem  // 추가
+import com.example.my_universe.model.CategoryItem
 
 class CategoryAdapter(private val items: List<CategoryItem>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+
+    // 추가 시작
+    private var onItemClickListener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClick(categoryItem: CategoryItem)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
+    // 추가 끝
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -20,7 +32,15 @@ class CategoryAdapter(private val items: List<CategoryItem>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item)
+
+        // 추가 시작
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(item)
+        }
+        // 추가 끝
+
     }
+
 
     override fun getItemCount(): Int {
         return items.size
@@ -28,11 +48,11 @@ class CategoryAdapter(private val items: List<CategoryItem>) : RecyclerView.Adap
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val categoryImageView: ImageView = itemView.findViewById(R.id.categoryImageView)
-        private val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)  // 추가
+        private val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
 
         fun bind(item: CategoryItem) {
             categoryImageView.setImageResource(item.imageResId)
-            categoryTextView.text = item.text  // 추가
+            categoryTextView.text = item.text
         }
     }
 }

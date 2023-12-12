@@ -2,23 +2,22 @@ package com.example.my_universe
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.my_universe.MainAdapter.CategoryAdapter
 import com.example.my_universe.MainFragment.HomeFragment
 import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
-import com.example.my_universe.recycler.CategoryAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,10 +38,22 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val transaction = supportFragmentManager.beginTransaction()
                 when (tab?.text) {
-                    "홈" -> transaction.replace(R.id.tabContent, HomeFragment())
-                    "위시" -> transaction.replace(R.id.tabContent, WishFragment())
-                    "맵" -> transaction.replace(R.id.tabContent, MapFragment())
-                    "마이" -> transaction.replace(R.id.tabContent, MyPageActivity())
+                    "홈" -> {
+                        transaction.replace(R.id.tabContent, HomeFragment())
+                        binding.header.visibility = View.VISIBLE
+                    }
+                    "위시" -> {
+                        transaction.replace(R.id.tabContent, WishFragment())
+                        binding.header.visibility = View.VISIBLE
+                    }
+                    "맵" -> {
+                        transaction.replace(R.id.tabContent, MapFragment())
+                        binding.header.visibility = View.VISIBLE
+                    }
+                    "마이" -> {
+                        transaction.replace(R.id.tabContent, MyPageActivity())
+                        binding.header.visibility = View.GONE
+                    }
                 }
                 transaction.commit()
             }
@@ -57,12 +68,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         // 로그인 상태 확인
-        checkLoginStatus()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
         checkLoginStatus()
     }
 

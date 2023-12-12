@@ -14,6 +14,7 @@ package com.example.my_universe.ApiModel
 //            "MAIN_TITLE": "초량이바구길",
 //            "CATE2_NM": "도보여행",
 //            "LAT": 35.11635,
+//            "GUGUN_NM": "동구",
 //            "LNG": 129.03874,
 //            "PLACE": "초량이바구길",
 //            "TITLE": "이야기로 피어난 어제의 기억 초량이바구길",
@@ -37,22 +38,24 @@ package com.example.my_universe.ApiModel
 //        "UC_SEQ": 58,
 //        "MAIN_TITLE": "초량이바구길",
 //        "GUGUN_NM": "동구",
-class ItemListModel77 (
-    // 변수명, 넘어온 데이터 변수명 일치하기.
-    val getRecommendedKr : GetRecommendedKr
+class ItemListModel77(
+    val getRecommendedKr: GetRecommendedKr
 )
 
-class GetRecommendedKr (
-    val item : List<ItemModel77>?
+class GetRecommendedKr(
+    val item: List<ItemModel77>?
 )
 
 class ItemModel77 {
-    var MAIN_TITLE : String? = null
-    var TITLE : String? = null
-    var MAIN_IMG_NORMAL : String? = null
-    var MAIN_IMG_THUMB : String? = null
-
+    var MAIN_TITLE: String? = null
+    var TITLE: String? = null
+    var MAIN_IMG_NORMAL: String? = null
+    var MAIN_IMG_THUMB: String? = null
+    var GUGUN_NM: String? = null
 }
+
+
+
 
 
 

@@ -8,73 +8,82 @@
     android:layout_height="match_parent"
     tools:context="MainActivity">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/searchIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="410dp"
+            android:layout_height="116dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:cardCornerRadius="100dp"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            />
+            app:cardCornerRadius="12dp"
+            app:cardElevation="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView"
+            >
+            <TextView
+                android:id="@+id/customTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="어디로 여행 가세요?   어디든지 | 언제든 | 게스트"
+                android:textColor="#ccc"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:paddingLeft="25dp"
+                />
 
-    </androidx.appcompat.widget.Toolbar>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="true"
+                />
+            <!-- app:queryHint="어디로 여행 가세요?" 삭제 -->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecyclerView"
-        android:layout_width="410dp"
-        android:layout_height="116dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:cardCornerRadius="100dp"
-        />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchCardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView"
-        >
 
-        <TextView
-            android:id="@+id/customTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="어디로 여행 가세요?   어디든지 | 언제든 | 게스트"
-            android:textColor="#ccc"
-            android:gravity="center"
-            android:paddingTop="16dp"
-            android:paddingLeft="25dp"
-            />
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:iconifiedByDefault="true"
-            />
-        <!-- app:queryHint="어디로 여행 가세요?" 삭제 -->
-
-    </androidx.cardview.widget.CardView>
 
         <!-- TextView를 감싸는 LinearLayout 추가 -->
         <LinearLayout
@@ -84,7 +93,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchCardView">
+            app:layout_constraintTop_toBottomOf="@+id/header">
 
             <FrameLayout
                 android:id="@+id/tabContent"

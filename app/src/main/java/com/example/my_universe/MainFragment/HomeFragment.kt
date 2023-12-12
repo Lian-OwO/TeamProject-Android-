@@ -39,8 +39,11 @@ class HomeFragment : Fragment() {
         binding.tabRecyclerTest1.adapter = myAdapter
         binding.tabRecyclerTest1.layoutManager = LinearLayoutManager(requireContext())
 
+
+
         val networkService =
             (activity?.applicationContext as com.example.my_universe.MyApplication).networkService
+        
 
         val boardListCall = networkService.getMainBoardItem(serviceKey2, pageNum, numOfRows, "json")
         boardListCall.enqueue(object : Callback<ItemListModel77> {
@@ -83,6 +86,8 @@ class HomeFragment : Fragment() {
         })
         return binding.root
     }
+
+
 
     private fun loadMoreItems(networkService: INetworkService) {
         isLoading = true

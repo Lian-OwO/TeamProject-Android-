@@ -6,9 +6,7 @@ import com.example.my_universe.API.INetworkService
 import com.example.my_universe.API.NaverNetworkService
 import com.example.my_universe.retrofit.ResourceServerNetwork
 import com.example.my_universe.utils.SharedPreferencesManager
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthWebException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -31,7 +29,7 @@ class MyApplication : MultiDexApplication() {
             chain.proceed(request)
         }
         .build()
-    val SERVER_BASE_URL : String = "http://10.100.104.53:8080/"
+    val SERVER_BASE_URL : String = "http://10.100.104.22:8080/"
     val BASE_URL = "http://apis.data.go.kr/6260000/"
     val BASE_URL2 = "https://apis.data.go.kr/6260000/RecommendedService/"
     val NAVER_MAP_URL ="https://naveropenapi.apigw.ntruss.com/"

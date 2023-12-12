@@ -13,6 +13,7 @@ package com.example.my_universe.ApiModel
 //            "UC_SEQ": 58,
 //            "MAIN_TITLE": "초량이바구길",
 //            "CATE2_NM": "도보여행",
+//"GUGUN_NM": "동구",
 //            "LAT": 35.11635,
 //            "LNG": 129.03874,
 //            "PLACE": "초량이바구길",
