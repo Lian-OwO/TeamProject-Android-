@@ -5,7 +5,6 @@
 
     <LinearLayout
         android:id="@+id/item_root"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:orientation="horizontal"
@@ -30,7 +29,7 @@
                     android:src="@drawable/room" />
 
                 <TextView
-                    android:id="@+id/appointmentText"
+                    android:id="@+id/reserveText"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
