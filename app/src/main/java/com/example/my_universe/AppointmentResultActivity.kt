@@ -1,8 +1,11 @@
 package com.example.my_universe
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager2.widget.ViewPager2
+import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.databinding.ActivityAppointmentResultBinding
 import com.example.my_universe.recycler.AppointmentslideAdapter2
 
@@ -15,7 +18,27 @@ class AppointmentResultActivity : AppCompatActivity() {
 
 
 
-// 이미지 슬라이드
+////////// '숙소문의' 버튼
+        binding.buttonReserveReturn.setOnClickListener {
+            val intent = Intent(this@AppointmentResultActivity, AppointmentActivity::class.java)
+            startActivity(intent)
+        }
+
+////////// '지도보기' 버튼
+        binding.buttonReserveMap.setOnClickListener {
+            val mapFragment = MapFragment()
+            val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+            // FrameLayout 등의 컨테이너에 MapFragment를 추가
+            transaction.replace(R.id.fragmentContainer, mapFragment)
+
+            // FragmentTransaction 완료
+            transaction.commit()
+        }
+
+
+
+////////// 이미지 슬라이드
         binding.viewPager02.adapter = AppointmentslideAdapter2(this)
         // 처음, 마지막 페이지간 양방향 이동 가능
         binding.viewPager02.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {

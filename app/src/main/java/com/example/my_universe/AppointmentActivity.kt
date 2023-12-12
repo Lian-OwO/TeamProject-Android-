@@ -1,5 +1,6 @@
 package com.example.my_universe
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -32,9 +33,21 @@ class AppointmentActivity : AppCompatActivity() {
 
 
 
+////////// '뒤로가기' 버튼
+        binding.buttonReserveMain.setOnClickListener {
+            val intent = Intent(this@AppointmentActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+////////// '예약하기' 버튼
+        binding.buttonReserve.setOnClickListener {
+            val intent = Intent(this@AppointmentActivity, AppointmentResultActivity::class.java)
+            startActivity(intent)
+        }
 
 
-        // 이미지 슬라이드
+
+////////// 이미지 슬라이드
         binding.viewPager01.adapter = AppointmentslideAdapter1(this)
         // 처음, 마지막 페이지간 양방향 이동 가능
         binding.viewPager01.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
