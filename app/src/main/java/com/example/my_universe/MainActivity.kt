@@ -2,24 +2,23 @@ package com.example.my_universe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.my_universe.LoginFormActivity
 import com.example.my_universe.MainFragment.HomeFragment
 import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.WishFragment
-import com.example.my_universe.MyPageActivity
-import com.example.my_universe.R
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
 import com.example.my_universe.recycler.CategoryAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -58,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         // 로그인 상태 확인
+        checkLoginStatus()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         checkLoginStatus()
     }
 

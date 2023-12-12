@@ -5,23 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.my_universe.MyApplication.Companion.auth
-import com.example.my_universe.MyApplication.Companion.rdb
 import com.example.my_universe.databinding.ActivityPhoneAuthBinding
+import com.example.my_universe.model.RequestResultVO
 import com.example.my_universe.model.User
 import com.example.my_universe.utils.SharedPreferencesManager
-import com.example.my_universe.utils.SharedPreferencesManager.getEmail
-import com.example.my_universe.utils.SharedPreferencesManager.saveEmail
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthMissingActivityForRecaptchaException
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 class PhoneAuthActivity : AppCompatActivity() {
@@ -68,29 +68,42 @@ class PhoneAuthActivity : AppCompatActivity() {
                         // 추가로 필요한 작업 수행
                         Log.d("로그인 과정 중 전화번호 인증", "사용자가 직접 입력한 인증번호가 유효합니다.")
                         Toast.makeText(this@PhoneAuthActivity, "인증 성공했습니다.", Toast.LENGTH_SHORT).show()
+
                         val email = intent.getStringExtra("email")
                         val password = intent.getStringExtra("password")
                         val name = intent.getStringExtra("name")
+                        Log.d("로그인 과정 중 전화번호 인증", phoneNum)
                         val user : User = User(name, email, password, phoneNum)
+                        Log.d("로그인 과정 중 전화번호 인증", "${user.username} ${user.email} ${user.password} ${user.phoneNum} ")
 
-                        database = rdb.reference
-                        val dataPath = "${auth.currentUser?.uid}"
-                        database.child(dataPath).setValue(user)
-                            .addOnSuccessListener {
-                                // 성공적으로 데이터를 썼을 때의 처리
-                                Log.d("로그인 유저 정보 실시간 DB저장 성공", "성공")
-                                saveEmail(this@PhoneAuthActivity, email)
-                                Log.d("로그인 데이터 저장 후, 쉐어드레퍼런스 이메일 가져오기", getEmail(this@PhoneAuthActivity).toString())
+                        val networkService = (applicationContext as MyApplication).androidServer
+                        val registerCall = networkService.doRegister(user)
+                        registerCall.enqueue(object : Callback<RequestResultVO> {
+                            override fun onResponse(
+                                call: Call<RequestResultVO>,
+                                response: Response<RequestResultVO>
+                            ) {
+                                if (response.isSuccessful) {
+                                    // 성공적인 응답 처리
+                                    val result = response?.body()
+                                    Log.d("로그인, 요청 보냄", "요청 보냄")
+                                    Log.d("로그인 후 결과값 체크", "서버 메세지 : ${result?.message}")
+                                    finish()
+                                    auth.signOut()
+                                } else {
+                                    // 응답이 실패한 경우
+                                    Log.d("로그인 후 결과값 체크", "응답 실패, 코드: ${response.code()}")
+                                    auth.signOut()
+                                }
                             }
-                            .addOnFailureListener {
-                                // 데이터 쓰기 실패 시의 처리
-                                Toast.makeText(this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                Log.e("로그인 유저 정보 실시간 DB저장 실패", "실패", it)
+                            override fun onFailure(call: Call<RequestResultVO>, t: Throwable) {
+                                Log.d("로그인 후 결과값 체크", "요청 실패..")
+                                Log.d("로그인 후 결과값 체크", t.toString())
+                                auth.signOut()
                             }
-                        SharedPreferencesManager.saveLoginStatus(this, true)
-                        Log.d("로그인 완료 유저 정보", user?.email.toString())
-                        Log.d("로그인 완료 유저 정보", auth.currentUser?.uid.toString())
-                        finish()
+                        })
+
+
                     } else {
                         // 인증 실패, 구글 인증한 사용자 정보 비우기
                         auth.signOut()

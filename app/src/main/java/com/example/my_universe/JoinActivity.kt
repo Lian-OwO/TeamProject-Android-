@@ -52,35 +52,13 @@ class JoinActivity : AppCompatActivity() {
                 Toast.makeText(this@JoinActivity, "패스워드가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
             }
 
-//             Write a message to the database
-//            val database = Firebase.database
-//            val myRef = database.getReference("users")
-
-//            database.child("users").setValue(user)
-//                .addOnSuccessListener {
-//                    Log.d("scb", "Data uploaded successfully")
-//                }
-//                .addOnFailureListener { e ->
-//                    Log.e("scb", "Error uploading data: ${e.message}", e)
-//                }
-//            database.child("users").setValue(user) <-- 이게 되는 코드
-//            myRef.setValue(user)
-//            myRef.setValue("abc" , "def")
-
-            // 기본쓰기 확인1
-//            val database = Firebase.database
-//            val myRef = database.getReference("message")
-//
-//            myRef.setValue("Hello, World!")
-
-//            val user2 = User(name, email)
-
-//            database.child("users").child("1").setValue(user)
-
             Log.d("scb", "name : ${name}")
             Log.d("scb", "password : ${password}")
             Log.d("scb", "passwordCheck : ${passwordCheck}")
             Log.d("scb", "email : ${email}")
+        }
+        binding.delete.setOnClickListener {
+            finish()
         }
 
 
