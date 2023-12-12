@@ -72,20 +72,17 @@
             android:text=""
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/EmailView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text=""
-            android:textColor="@color/black" />
+<!--        <TextView-->
+<!--            android:id="@+id/EmailView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            android:textColor="@color/black" />-->
 
         <TextView
             android:id="@+id/NameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:text=""
             android:textColor="@color/black" />
 
@@ -93,7 +90,6 @@
             android:id="@+id/PhoneNumberView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:text=""
             android:textColor="@color/black" />
 
@@ -106,15 +102,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reservationTextView" />
-<!--        &lt;!&ndash; 리사이클러뷰 &ndash;&gt;-->
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/recyclerView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/reservationTextView" />-->
+        <!--        &lt;!&ndash; 리사이클러뷰 &ndash;&gt;-->
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/recyclerView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/reservationTextView" />-->
     </LinearLayout>
 
     <LinearLayout
@@ -154,30 +150,30 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-<!--        &lt;!&ndash; 로그아웃 버튼 &ndash;&gt;-->
-<!--        <Button-->
-<!--            android:id="@+id/logoutButton"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginHorizontal="5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/button_round"-->
-<!--            android:text="로그아웃"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="15sp" />-->
+        <!--        &lt;!&ndash; 로그아웃 버튼 &ndash;&gt;-->
+        <!--        <Button-->
+        <!--            android:id="@+id/logoutButton"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginHorizontal="5dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@drawable/button_round"-->
+        <!--            android:text="로그아웃"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="15sp" />-->
 
-<!--        &lt;!&ndash; 로그인 버튼 &ndash;&gt;-->
-<!--        <Button-->
-<!--            android:id="@+id/loginButton"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginHorizontal="5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/button_round"-->
-<!--            android:text="로그인"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="15sp"-->
-<!--            android:visibility="gone" />-->
+        <!--        &lt;!&ndash; 로그인 버튼 &ndash;&gt;-->
+        <!--        <Button-->
+        <!--            android:id="@+id/loginButton"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginHorizontal="5dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@drawable/button_round"-->
+        <!--            android:text="로그인"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="15sp"-->
+        <!--            android:visibility="gone" />-->
     </LinearLayout>
 
     <!-- 텍스트뷰 -->
@@ -197,46 +193,46 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tabs"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent">-->
+    <!--    <com.google.android.material.tabs.TabLayout-->
+    <!--        android:id="@+id/tabs"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent">-->
 
-<!--        &lt;!&ndash;방법2 뷰 xml로 탭 아이템을 추가 &ndash;&gt;-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/home"-->
-<!--            android:text="홈"/>-->
+    <!--        &lt;!&ndash;방법2 뷰 xml로 탭 아이템을 추가 &ndash;&gt;-->
+    <!--        <com.google.android.material.tabs.TabItem-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:icon="@drawable/home"-->
+    <!--            android:text="홈"/>-->
 
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/wish"-->
-<!--            android:text="위시"/>-->
+    <!--        <com.google.android.material.tabs.TabItem-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:icon="@drawable/wish"-->
+    <!--            android:text="위시"/>-->
 
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/map"-->
-<!--            android:text="맵"/>-->
+    <!--        <com.google.android.material.tabs.TabItem-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:icon="@drawable/map"-->
+    <!--            android:text="맵"/>-->
 
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/review"-->
-<!--            android:text="리뷰"/>-->
+    <!--        <com.google.android.material.tabs.TabItem-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:icon="@drawable/review"-->
+    <!--            android:text="리뷰"/>-->
 
-<!--        <com.google.android.material.tabs.TabItem-->
+    <!--        <com.google.android.material.tabs.TabItem-->
 
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/profile"-->
-<!--            android:text="마이"/>-->
-<!--    </com.google.android.material.tabs.TabLayout>-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:icon="@drawable/profile"-->
+    <!--            android:text="마이"/>-->
+    <!--    </com.google.android.material.tabs.TabLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

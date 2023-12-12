@@ -47,16 +47,18 @@ class MyPageActivity : Fragment() {
         if (currentUser != null) {
             binding.idTextView.text = "이메일 : ${getEmail(requireContext())}"
 
+
             val uid: String = currentUser.uid
             val userRef = FirebaseDatabase.getInstance().getReference("users").child(uid)
 
             userRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val user = dataSnapshot.getValue(User::class.java)
-
+                    Log.d("로그인 후 매핑 확인", user?.email.toString())
+                    Log.d("로그인 후 매핑 확인", user?.phoneNum.toString())
                     if (user != null) {
-                        binding.PhoneNumberView.text = "전화번호 : ${user.phoneNum}"
-                        binding.NameView.text = "이름 : ${user.name}"
+                        binding.PhoneNumberView.setText("전화번호 : ${user.phoneNum}")
+                        binding.NameView.setText("이름 : ${user.name}")
                     }
                 }
 
