@@ -2,6 +2,7 @@ package com.example.my_universe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,14 +16,14 @@ import com.example.my_universe.MainFragment.MapFragment
 import com.example.my_universe.MainFragment.WishFragment
 import com.example.my_universe.databinding.ActivityMainBinding
 import com.example.my_universe.model.CategoryItem
+import com.example.my_universe.utils.SharedPreferencesManager
+import com.example.my_universe.utils.SharedPreferencesManager.getLoginStatus
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var isLoggedIn: Boolean = false
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,14 +68,13 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // 로그인 상태 확인
-        checkLoginStatus()
+        // 화면 다시 그리기
+        invalidateOptionsMenu()
     }
 
-    private fun checkLoginStatus() {
-        val currentUser: FirebaseUser? = auth.currentUser
-        isLoggedIn = (auth.currentUser != null)
-        invalidateOptionsMenu() // 메뉴 다시 그리기
+    override fun onResume() {
+        super.onResume()
+        invalidateOptionsMenu()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -91,7 +91,10 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_logout -> {
                 // 로그아웃 처리 (Firebase 사용 시 필요한 코드 추가)
-                auth.signOut()
+                SharedPreferencesManager.saveName(this@MainActivity, null)
+                SharedPreferencesManager.saveEmail(this@MainActivity, null)
+                SharedPreferencesManager.saveToken(this@MainActivity, null)
+                SharedPreferencesManager.saveLoginStatus(this@MainActivity, false)
                 // 로그아웃 후 로그인 화면으로 이동 또는 다른 처리 수행
                 startActivity(Intent(this, LoginFormActivity::class.java))
                 true
@@ -102,8 +105,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateMenuVisibility(menu: Menu) {
         // 현재 사용자의 로그인 상태에 따라 메뉴 아이템 가시성 설정
-        menu.findItem(R.id.action_login)?.isVisible = !isLoggedIn
-        menu.findItem(R.id.action_logout)?.isVisible = isLoggedIn
+        menu.findItem(R.id.action_login)?.isVisible = !getLoginStatus(this@MainActivity)!!
+        Log.d("로그인 후 테스트", getLoginStatus(this@MainActivity).toString())
+        menu.findItem(R.id.action_logout)?.isVisible = getLoginStatus(this@MainActivity)!!
     }
 
     private fun initializeRecyclerView() {
