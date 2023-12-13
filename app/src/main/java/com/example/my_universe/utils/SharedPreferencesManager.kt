@@ -26,9 +26,9 @@ object SharedPreferencesManager {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn)
         editor.apply()
     }
-    fun getLoginStatus(context: Context): String? {
+    fun getLoginStatus(context: Context): Boolean? {
         val sharedPreferences = context.getSharedPreferences(KEY_IS_LOGGED_IN, Context.MODE_PRIVATE)
-        return sharedPreferences.getString(KEY_IS_LOGGED_IN, null)
+        return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false)
     }
     fun saveToken(context: Context, token: String?) {
         val editor: SharedPreferences.Editor = context.getSharedPreferences(KEY_TOKEN, Context.MODE_PRIVATE).edit()
