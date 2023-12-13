@@ -4,13 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.my_universe.databinding.ItemAppointmentBinding
+import com.example.my_universe.databinding.ItemReserveBinding
 
-class AppointmentViewHolder (val binding : ItemAppointmentBinding) : RecyclerView.ViewHolder(binding.root)
+class ReserveViewHolder (val binding : ItemReserveBinding) : RecyclerView.ViewHolder(binding.root)
 
-class AppointmentAdapter (val datas: MutableList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ReserveAdapter (val datas: MutableList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        AppointmentViewHolder(ItemAppointmentBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        ReserveViewHolder(ItemReserveBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     override fun getItemCount(): Int {
         Log.d("kdy","getItemCount : ${datas.size}")
@@ -19,8 +19,8 @@ class AppointmentAdapter (val datas: MutableList<String>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         Log.d("kdy","onBindViewHolder : $position")
-        val binding = (holder as AppointmentViewHolder).binding
-        binding.appointmentText.text = datas[position]
+        val binding = (holder as ReserveViewHolder).binding
+        binding.reserveText.text = datas[position]
         binding.itemRoot.setOnClickListener {
             Log.d("kdy","item clicked : $position")
         }

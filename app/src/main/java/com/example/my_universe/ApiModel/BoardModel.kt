@@ -25,7 +25,10 @@ data class BoardModel(
     val mainImgNormal: String,
 
     @SerializedName("ITEMCNTNTS")
-    val itemcntnts: String
+    val itemcntnts: String,
+
+    @SerializedName("GUGUN_NM")
+    val gugunNm: String
 
 
 

@@ -5,9 +5,8 @@ import androidx.multidex.MultiDexApplication
 import com.example.my_universe.API.INetworkService
 import com.example.my_universe.API.NaverNetworkService
 import com.example.my_universe.retrofit.ResourceServerNetwork
-import com.google.firebase.FirebaseApp
+import com.example.my_universe.utils.SharedPreferencesManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthWebException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -16,26 +15,42 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.naver.maps.map.NaverMapSdk
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MyApplication : MultiDexApplication() {
+    val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", SharedPreferencesManager.getToken(this@MyApplication)!!)
+                .build()
+            chain.proceed(request)
+        }
+        .build()
+    val SERVER_BASE_URL : String = "http://10.100.104.53:8080/"
     val BASE_URL = "http://apis.data.go.kr/6260000/"
     val BASE_URL2 = "https://apis.data.go.kr/6260000/RecommendedService/"
     val NAVER_MAP_URL ="https://naveropenapi.apigw.ntruss.com/"
     // 1)통신에 필요한 인스턴스를 선언 및 초기화
     // 아직 초기화 안해서 그럼.
+    var androidServer: ResourceServerNetwork
     val networkService : INetworkService
     val map_networkService : NaverNetworkService
-    val resourceService : ResourceServerNetwork
     // 2)통신할 서버의 URL 주소를 등록함.
+    val serverRetrofit: Retrofit
+        get() = Retrofit.Builder()
+            .baseUrl(SERVER_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
     val retrofit : Retrofit
         get() = Retrofit.Builder()
 //            .baseUrl("http://apis.data.go.kr/6260000/RecommendedService/")
             .baseUrl(BASE_URL2)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     val retrofitMap : Retrofit
         get() = Retrofit.Builder()
             .baseUrl(NAVER_MAP_URL)
@@ -44,9 +59,9 @@ class MyApplication : MultiDexApplication() {
 
     // 초기화 할당 하는 부분.
     init {
+        androidServer = serverRetrofit.create(ResourceServerNetwork::class.java)
         networkService = retrofit.create(INetworkService::class.java)
         map_networkService = retrofitMap.create(NaverNetworkService::class.java)
-        resourceService = retrofit.create(ResourceServerNetwork::class.java)
     }
     companion object {
         // 원래는 자바에서, 해당 클래스의 멤버를 사용하는 방법2가지.

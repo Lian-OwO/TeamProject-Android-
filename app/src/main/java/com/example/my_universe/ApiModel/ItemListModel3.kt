@@ -13,4 +13,5 @@ class ItemModel4 {
     var MAIN_TITLE : String? = null
     var TITLE : String? = null
     var MAIN_IMG_NORMAL : String? = null
+
 }

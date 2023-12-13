@@ -188,45 +188,45 @@ class BoardWriteActivity : AppCompatActivity() {
             Log.d("kjh", "imgRef 후!")
             // 파일 불러오기. 갤러리에서 사진을 선택 했고, 또한, 해당 위치에 접근해서,
             // 파일도 불러오기 가능함.
-            for ((index, filePath) in imageFilepathArray.withIndex()) {
-                val dynamicKey = "img${index + 1}"
-                var file : Uri = Uri.fromFile(File(filePath))
-                val uuid = UUID.randomUUID().toString()
-                // 이미지 저장될 위치 및 파일명
-                val imgRef = storageRef.child("AndroidImg/${uuid}.jpg")
-                board.addImage(dynamicKey,"AndroidImg/${uuid}.jpg")
-                imgRef.putFile(file)
-                    // 업로드 후, 수행할 콜백 함수 정의. 실패했을 경우 콜백함수 정의
-                    .addOnCompleteListener{task ->
-                        if (task.isSuccessful) {
-                            Log.d("kjh", "업로드 성공!")
-                            val token : String = "Bearer " + auth.currentUser?.uid
-                            val networkService = (applicationContext as MyApplication).resourceService
-                            val testCall = networkService.getBoardUpload(token);
-                            Log.d("서버 통신, 넘겨준 토큰 값", token)
-                            testCall.enqueue(object : Callback<String> {
-                                override fun onResponse(
-                                    call: Call<String>,
-                                    response: Response<String>
-                                ) {
-                                    auth.currentUser?.let { it1 -> Log.d("서버 통신, 넘겨준 토큰 값", it1.uid) }
-                                    Log.d("서버 통신, 받아온 데이터", response.body().toString())
-                                }
-
-                                override fun onFailure(call: Call<String>, t: Throwable) {
-                                    Log.d("서버 통신, 받아온 데이터", "통신 실패")
-                                    call.cancel()
-                                }
-
-                            })
-                            finish()
-                        } else {
-                            // 업로드 실패
-                            Log.d("kjh", "업로드 실패!")
-                            Toast.makeText(this, "이미지 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            }
+//            for ((index, filePath) in imageFilepathArray.withIndex()) {
+//                val dynamicKey = "img${index + 1}"
+//                var file : Uri = Uri.fromFile(File(filePath))
+//                val uuid = UUID.randomUUID().toString()
+//                // 이미지 저장될 위치 및 파일명
+//                val imgRef = storageRef.child("AndroidImg/${uuid}.jpg")
+//                board.addImage(dynamicKey,"AndroidImg/${uuid}.jpg")
+//                imgRef.putFile(file)
+//                    // 업로드 후, 수행할 콜백 함수 정의. 실패했을 경우 콜백함수 정의
+//                    .addOnCompleteListener{task ->
+//                        if (task.isSuccessful) {
+//                            Log.d("kjh", "업로드 성공!")
+//                            val token : String = "Bearer " + auth.currentUser?.uid
+//                            val networkService = (applicationContext as MyApplication).resourceService
+//                            val testCall = networkService.getBoardUpload(token);
+//                            Log.d("서버 통신, 넘겨준 토큰 값", token)
+//                            testCall.enqueue(object : Callback<String> {
+//                                override fun onResponse(
+//                                    call: Call<String>,
+//                                    response: Response<String>
+//                                ) {
+//                                    auth.currentUser?.let { it1 -> Log.d("서버 통신, 넘겨준 토큰 값", it1.uid) }
+//                                    Log.d("서버 통신, 받아온 데이터", response.body().toString())
+//                                }
+//
+//                                override fun onFailure(call: Call<String>, t: Throwable) {
+//                                    Log.d("서버 통신, 받아온 데이터", "통신 실패")
+//                                    call.cancel()
+//                                }
+//
+//                            })
+//                            finish()
+//                        } else {
+//                            // 업로드 실패
+//                            Log.d("kjh", "업로드 실패!")
+//                            Toast.makeText(this, "이미지 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//            }
         }
         binding.btnCancel.setOnClickListener {
             finish()

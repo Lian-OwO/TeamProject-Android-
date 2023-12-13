@@ -4,8 +4,13 @@
         <item name="colorPrimary">#2389C8</item>
         <item name="android:fontFamily">@font/parti</item>
         <item name="color">#ff0000</item>
+        <item name="colorOnSecondary">#FF8A80</item>
+
     </style>
     <style name="Theme.My_Universe" parent="Base.Theme.My_Universe" />
+
+    <color name="your_selected_color">#FF0000</color>
+
 
 
 

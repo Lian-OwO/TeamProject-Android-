@@ -1,22 +1,23 @@
 package com.example.my_universe
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.my_universe.databinding.FragmentSlidepage05Binding
+import com.example.my_universe.databinding.FragmentReserveslidePage03Binding
 
-class AppointmentslidePage05 : Fragment() {
-    lateinit var binding: FragmentSlidepage05Binding
+class ReserveslidePage03 : Fragment() {
+    lateinit var binding: FragmentReserveslidePage03Binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSlidepage05Binding.inflate(inflater, container, false)
+        binding = FragmentReserveslidePage03Binding.inflate(inflater, container, false)
 
         return binding.root
     }
+
 
 }

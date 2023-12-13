@@ -53,6 +53,7 @@ class MyAdapterRetrofit77(val context : Context, val datas : List<ItemModel77>?)
         // 뷰에 데이터 내용 붙이기. 1) 일반 텍스트 먼저 붙이기.
         binding.retrofitTitleView.text = item?.TITLE
         binding.retrofitContentView.text = item?.MAIN_TITLE
+        binding.retrofitContentView.text = item?.GUGUN_NM
 
 
         // glide 통해서, 이미지 를 직접 가져와서 처리하는 부분.

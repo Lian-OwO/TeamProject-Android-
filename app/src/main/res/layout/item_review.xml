@@ -20,7 +20,7 @@
 
             <!-- 뷰페이저 넣기 -->
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/tapFragSliderviewPager1"
+                android:id="@+id/tapFragSliderviewPager2"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
 
@@ -29,13 +29,11 @@
                 android:id="@+id/testText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tapFragSliderviewPager1"
+                android:layout_below="@id/tapFragSliderviewPager2"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="5dp"
                 android:text="제목"
                 android:textStyle="bold" />
-
-
 
             <!-- 두 번째 TextView -->
             <TextView
@@ -48,14 +46,7 @@
                 android:textStyle="bold" />
 
             <!-- 아이콘 추가 -->
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@id/descriptionText"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/like" />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
