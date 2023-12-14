@@ -67,6 +67,8 @@ class PhoneAuthActivity : AppCompatActivity() {
                         // 인증 성공
                         // 추가로 필요한 작업 수행
                         Log.d("로그인 과정 중 전화번호 인증", "사용자가 직접 입력한 인증번호가 유효합니다.")
+                        Log.d("로그인 과정 중 전화번호 인증", auth.currentUser?.email.toString())
+                        Log.d("로그인 과정 중 전화번호 인증", auth.currentUser?.uid.toString())
                         Toast.makeText(this@PhoneAuthActivity, "인증 성공했습니다.", Toast.LENGTH_SHORT).show()
 
                         val email = intent.getStringExtra("email")
@@ -89,7 +91,6 @@ class PhoneAuthActivity : AppCompatActivity() {
                                     Log.d("로그인, 요청 보냄", "요청 보냄")
                                     Log.d("로그인 후 결과값 체크", "서버 메세지 : ${result?.message}")
                                     finish()
-                                    auth.signOut()
                                 } else {
                                     // 응답이 실패한 경우
                                     Log.d("로그인 후 결과값 체크", "응답 실패, 코드: ${response.code()}")

@@ -29,7 +29,7 @@ class MyApplication : MultiDexApplication() {
             chain.proceed(request)
         }
         .build()
-    val SERVER_BASE_URL : String = "http://10.100.104.53:8080/"
+    val SERVER_BASE_URL : String = "http://10.100.104.50:8080/"
     val BASE_URL = "http://apis.data.go.kr/6260000/"
     val BASE_URL2 = "https://apis.data.go.kr/6260000/RecommendedService/"
     val NAVER_MAP_URL ="https://naveropenapi.apigw.ntruss.com/"

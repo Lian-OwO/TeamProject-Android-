@@ -2,6 +2,8 @@ package com.example.my_universe.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.my_universe.MainActivity
+import com.example.my_universe.MyPageActivity
 
 object SharedPreferencesManager {
 
@@ -26,7 +28,7 @@ object SharedPreferencesManager {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn)
         editor.apply()
     }
-    fun getLoginStatus(context: Context): Boolean? {
+    fun getLoginStatus(context: MainActivity): Boolean? {
         val sharedPreferences = context.getSharedPreferences(KEY_IS_LOGGED_IN, Context.MODE_PRIVATE)
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false)
     }

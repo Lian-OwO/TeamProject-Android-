@@ -19,8 +19,6 @@ import com.example.my_universe.model.CategoryItem
 import com.example.my_universe.utils.SharedPreferencesManager
 import com.example.my_universe.utils.SharedPreferencesManager.getLoginStatus
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
