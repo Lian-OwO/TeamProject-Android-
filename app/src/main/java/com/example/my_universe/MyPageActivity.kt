@@ -12,9 +12,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.my_universe.MyApplication.Companion.auth
 import com.example.my_universe.databinding.ActivityMyPageBinding
 import com.example.my_universe.model.User
 import com.example.my_universe.utils.SharedPreferencesManager.getEmail
+import com.example.my_universe.utils.SharedPreferencesManager.getName
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -25,7 +27,6 @@ import com.google.firebase.storage.UploadTask
 import java.io.IOException
 
 class MyPageActivity : Fragment() {
-    private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMyPageBinding
     private var filePath: Uri? = null
     private val storageRef: StorageReference = FirebaseStorage.getInstance().reference
@@ -41,8 +42,8 @@ class MyPageActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = FirebaseAuth.getInstance()
         val currentUser: FirebaseUser? = auth.currentUser
+        Log.d("로그인 후 마이페이지", "uid : "+currentUser?.uid.orEmpty())
 
         if (currentUser != null) {
             binding.idTextView.text = "이메일 : ${getEmail(requireContext())}"
@@ -56,8 +57,8 @@ class MyPageActivity : Fragment() {
                     Log.d("로그인 후 매핑 확인", user?.email.toString())
                     Log.d("로그인 후 매핑 확인", user?.phoneNum.toString())
                     if (user != null) {
-                        binding.PhoneNumberView.text = "전화번호 : ${user.phoneNum}"
-                        binding.NameView.text = "이름 : ${user.username}"
+                        binding.PhoneNumberView.text = "전화번호 : 010-0000-0000"
+                        binding.NameView.text = "이름 : ${getName(requireContext())}"
                     }
                 }
 
