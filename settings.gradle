@@ -16,5 +16,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My_Universe"
+rootProject.name = "my_universe"
 include ':app'

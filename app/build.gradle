@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.my_universe'
+    namespace 'com.my_universe'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.my_universe"
+        applicationId "com.my_universe"
         minSdk 26
         targetSdk 33
         versionCode 1
